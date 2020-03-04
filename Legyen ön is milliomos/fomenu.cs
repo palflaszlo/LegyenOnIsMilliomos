@@ -12,11 +12,21 @@ namespace Legyen_ön_is_milliomos
 {
     public partial class fomenu : Form
     {
+        mentes mentett = new mentes();
+
         public fomenu()
         {
             InitializeComponent();
+            if (!mentett.select().Equals(""))
+            {
+                btnLoad.Enabled = true;
+            }
+            else
+            {
+                btnLoad.Enabled = false;
+            }
         }
-        public bool btnLoadSave = false;
+        
         private void btmStart_Click(object sender, EventArgs e)
         {
             Jatekmenuk jatekFormok = new Jatekmenuk();
@@ -27,10 +37,9 @@ namespace Legyen_ön_is_milliomos
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            btnLoadSave = true;
             Properties.Settings.Default.mentes = true;
             Properties.Settings.Default.Save();
-            Jatek GameForm = new Jatek();
+            MentettJatek GameForm = new MentettJatek();
             this.Hide();
             GameForm.ShowDialog();
             this.Show();

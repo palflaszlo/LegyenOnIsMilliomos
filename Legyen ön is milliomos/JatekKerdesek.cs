@@ -122,19 +122,7 @@ namespace Legyen_ön_is_milliomos
             }
             else
             {
-                win = "won";
-                string message = "You won the whole game!";
-                string caption = "You are a millionare!";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result;
-
-                // Displays the MessageBox.
-                result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    // Closes the parent form.
-                    Jatek.ActiveForm.Close();
-                }
+                return 16;
             }
 
             return sor;

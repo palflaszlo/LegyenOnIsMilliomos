@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace Legyen_ön_is_milliomos
 {
-    public partial class Jatek : Form
+    public partial class MentettJatek : Form
     {
-        public Jatek()
+        public MentettJatek()
         {
             InitializeComponent();
             t.Elapsed += new ElapsedEventHandler(OnTimeEvent);
@@ -24,6 +24,7 @@ namespace Legyen_ön_is_milliomos
             t2.Interval = 1000;
             pTsz.createDatabase();
             mentett.createDatabase();
+            label1.Text = mentett.select();
         }
 
         public bool dontRunHandler;
@@ -42,7 +43,6 @@ namespace Legyen_ön_is_milliomos
         public int[] tomb = new int[50000];
 
         public int pontszam = 1;
-
 
         private void OnTimeEvent(object sender, ElapsedEventArgs e)
         {
@@ -76,37 +76,128 @@ namespace Legyen_ön_is_milliomos
                     forthAnswear.Invoke(new Action(text));
                     return;
                 }
-                label1.Text = Properties.Settings.Default.playerName + ';' + pontszam;
-                if (jk.getSor(szintT, tomb[szintT]) == 16)
+                if (!mentett.select().Equals("") && Properties.Settings.Default.mentes)
                 {
-                    
-                    jk.win = "won";
-                    pontszam = 16;
-                    pTsz.insertRow(Properties.Settings.Default.playerName, pontszam);
-                    jk.win = "";
-                    Properties.Settings.Default.vege = false;
-                    Properties.Settings.Default.Save();
-                    string message = "You won the whole game!";
-                    string caption = "You are a millionare!";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    DialogResult result;
-
-                    // Displays the MessageBox.
-                    result = MessageBox.Show(message, caption, buttons);
-                    if (result == System.Windows.Forms.DialogResult.OK)
+                    try
                     {
-                        // Closes the parent form.
-                        Jatek.ActiveForm.Close();
+                        Properties.Settings.Default.mentes = false;
+                        string mentettAllas = mentett.select();
+                        string[] adatok = mentettAllas.Split(';');
+                        N = Convert.ToInt32(adatok[4]);
+                        szintT = Convert.ToInt32(adatok[3]);
+                        pontszam = Convert.ToInt32(adatok[2]);
+                        Properties.Settings.Default.playerName = adatok[1];
+                        Question.Text = szintT + ".  " + jk.getKerdes(N);
+                        firstAnswer.Text = jk.getValaszA(N);
+                        secondAnswear.Text = jk.getValaszB(N);
+                        thirdAnswear.Text = jk.getValaszC(N);
+                        forthAnswear.Text = jk.getValaszD(N);
+                        switch (szintT)
+                        {
+                            case 1: lvl1.BackColor = Color.Orange; lvl1.ForeColor = Color.Black; break;
+                            case 2:
+                                lvl2.BackColor = Color.Orange; lvl2.ForeColor = Color.Black; lvl1.BackColor = Color.Green; break;
+                            case 3:
+                                lvl3.BackColor = Color.Orange; lvl3.ForeColor = Color.Black; lvl2.BackColor = Color.Green;
+                                lvl1.BackColor = Color.Green; break;
+                            case 4:
+                                lvl4.BackColor = Color.Orange; lvl4.ForeColor = Color.Black; lvl3.BackColor = Color.Green;
+                                lvl2.BackColor = Color.Green; lvl1.BackColor = Color.Green; break;
+                            case 5:
+                                lvl5.BackColor = Color.Orange; lvl5.ForeColor = Color.Black; lvl4.BackColor = Color.Green; 
+                                lvl3.BackColor = Color.Green;  lvl2.BackColor = Color.Green; lvl1.BackColor = Color.Green; break;
+                            case 6:
+                                lvl6.BackColor = Color.Orange; lvl6.ForeColor = Color.Black; lvl5.BackColor = Color.Green;    
+                                lvl4.BackColor = Color.Green;  lvl3.BackColor = Color.Green; lvl2.BackColor = Color.Green;
+                                lvl1.BackColor = Color.Green; break;
+                            case 7:
+                                lvl7.BackColor = Color.Orange; lvl7.ForeColor = Color.Black; lvl6.BackColor = Color.Green;
+                                lvl5.BackColor = Color.Green;  lvl4.BackColor = Color.Green; lvl3.BackColor = Color.Green;
+                                lvl2.BackColor = Color.Green;  lvl1.BackColor = Color.Green; break;
+                            case 8:
+                                lvl8.BackColor = Color.Orange; lvl8.ForeColor = Color.Black; lvl7.BackColor = Color.Green;  
+                                lvl6.BackColor = Color.Green;  lvl5.BackColor = Color.Green; lvl4.BackColor = Color.Green;
+                                lvl3.BackColor = Color.Green;  lvl2.BackColor = Color.Green; lvl1.BackColor = Color.Green; break;
+                            case 9:
+                                lvl9.BackColor = Color.Orange; lvl9.ForeColor = Color.Black; lvl8.BackColor = Color.Green;
+                                lvl7.BackColor = Color.Green;  lvl6.BackColor = Color.Green; lvl5.BackColor = Color.Green;
+                                lvl4.BackColor = Color.Green;  lvl3.BackColor = Color.Green; lvl2.BackColor = Color.Green;
+                                lvl1.BackColor = Color.Green; break;
+                            case 10:
+                                lvl10.BackColor = Color.Orange; lvl10.ForeColor = Color.Black; lvl9.BackColor = Color.Green;
+                                lvl8.BackColor = Color.Green;   lvl7.BackColor = Color.Green;  lvl6.BackColor = Color.Green;
+                                lvl5.BackColor = Color.Green;   lvl4.BackColor = Color.Green;  lvl3.BackColor = Color.Green;
+                                lvl2.BackColor = Color.Green;   lvl1.BackColor = Color.Green; break;
+                            case 11:
+                                lvl11.BackColor = Color.Orange; lvl11.ForeColor = Color.Black; lvl10.BackColor = Color.Green;
+                                lvl9.BackColor = Color.Green;   lvl8.BackColor = Color.Green;  lvl7.BackColor = Color.Green;
+                                lvl6.BackColor = Color.Green;   lvl5.BackColor = Color.Green;  lvl4.BackColor = Color.Green;
+                                lvl3.BackColor = Color.Green;   lvl2.BackColor = Color.Green;  lvl1.BackColor = Color.Green; break;
+                            case 12:
+                                lvl12.BackColor = Color.Orange; lvl12.ForeColor = Color.Black; lvl11.BackColor = Color.Green;
+                                lvl10.BackColor = Color.Green;  lvl9.BackColor = Color.Green;  lvl8.BackColor = Color.Green;
+                                lvl7.BackColor = Color.Green;   lvl6.BackColor = Color.Green;  lvl5.BackColor = Color.Green;
+                                lvl4.BackColor = Color.Green;   lvl3.BackColor = Color.Green;  lvl2.BackColor = Color.Green;
+                                lvl1.BackColor = Color.Green; break;
+                            case 13:
+                                lvl13.BackColor = Color.Orange; lvl13.ForeColor = Color.Black; lvl12.BackColor = Color.Green;
+                                lvl11.BackColor = Color.Green;  lvl10.BackColor = Color.Green; lvl9.BackColor = Color.Green;
+                                lvl8.BackColor = Color.Green;   lvl7.BackColor = Color.Green;  lvl6.BackColor = Color.Green;
+                                lvl5.BackColor = Color.Green;   lvl4.BackColor = Color.Green;  lvl3.BackColor = Color.Green;
+                                lvl2.BackColor = Color.Green;   lvl1.BackColor = Color.Green; break;
+                            case 14:
+                                lvl14.BackColor = Color.Orange; lvl14.ForeColor = Color.Black; lvl13.BackColor = Color.Green;
+                                lvl12.BackColor = Color.Green;  lvl11.BackColor = Color.Green; lvl10.BackColor = Color.Green;
+                                lvl9.BackColor = Color.Green;   lvl8.BackColor = Color.Green;  lvl7.BackColor = Color.Green;
+                                lvl6.BackColor = Color.Green;   lvl5.BackColor = Color.Green;  lvl4.BackColor = Color.Green;
+                                lvl3.BackColor = Color.Green;   lvl2.BackColor = Color.Green;  lvl1.BackColor = Color.Green; break;
+                            case 15:
+                                lvl15.BackColor = Color.Orange; lvl15.ForeColor = Color.Black; lvl14.BackColor = Color.Green;
+                                lvl13.BackColor = Color.Green;  lvl12.BackColor = Color.Green; lvl11.BackColor = Color.Green;
+                                lvl10.BackColor = Color.Green;  lvl9.BackColor = Color.Green;  lvl8.BackColor = Color.Green;
+                                lvl7.BackColor = Color.Green;   lvl6.BackColor = Color.Green;  lvl5.BackColor = Color.Green;
+                                lvl4.BackColor = Color.Green;   lvl3.BackColor = Color.Green;  lvl2.BackColor = Color.Green;
+                                lvl1.BackColor = Color.Green; break;
+                        }
                     }
+                    catch (FileNotFoundException)
+                    {
+                        StreamWriter newFile = new StreamWriter("save.txt");
+                    }
+
                 }
                 else
                 {
-                    N = jk.getSor(szintT, tomb[szintT]);
-                    Question.Text = szintT + ".  " + jk.getKerdes(N);
-                    firstAnswer.Text = jk.getValaszA(N);
-                    secondAnswear.Text = jk.getValaszB(N);
-                    thirdAnswear.Text = jk.getValaszC(N);
-                    forthAnswear.Text = jk.getValaszD(N);
+                    if (szintT == 16)
+                    {
+                        jk.win = "won";
+                        pontszam = 16;
+                        pTsz.insertRow(Properties.Settings.Default.playerName, pontszam);
+                        jk.win = "";
+                        Properties.Settings.Default.vege = false;
+                        Properties.Settings.Default.Save();
+                        string message = "You won the whole game!";
+                        string caption = "You are a millionare!";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        DialogResult result;
+
+                        // Displays the MessageBox.
+                        result = MessageBox.Show(message, caption, buttons);
+                        if (result == System.Windows.Forms.DialogResult.OK)
+                        {
+                            // Closes the parent form.
+                            MentettJatek.ActiveForm.Close();
+                        }
+                    }
+                    else
+                    {
+                        N = jk.getSor(szintT, tomb[szintT]);
+                        Question.Text = szintT + ".  " + jk.getKerdes(N);
+                        firstAnswer.Text = jk.getValaszA(N);
+                        secondAnswear.Text = jk.getValaszB(N);
+                        thirdAnswear.Text = jk.getValaszC(N);
+                        forthAnswear.Text = jk.getValaszD(N);
+                    }
                 }
                 if (szintT != 1)
                 {
@@ -213,10 +304,7 @@ namespace Legyen_ön_is_milliomos
                         forthAnswear.Invoke(new Action(error));
                         return;
                     }
-
-                    t.Stop();
-                    //Application.DoEvents();
-                    this.Close();
+                    MentettJatek.ActiveForm.Close();
                 }
                 catch (Exception ex)
                 {
@@ -251,6 +339,44 @@ namespace Legyen_ön_is_milliomos
                     case "D": forthAnswear.ForeColor = Color.Green; break;
                 }
                 error();
+            }
+        }
+
+        private void MentettJatek_Load(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < jk.questions.Count - 1; i++)
+            {
+                tomb[i] = r.Next(0, 4999);
+            }
+            text();
+            string segit = "Felező";
+            string[] segitsegek = Properties.Settings.Default.helps.Split(',');
+            if (segitsegek.Contains<string>(segit))
+            {
+                felezo.Enabled = true;
+            }
+            else
+            {
+                felezo.Enabled = false;
+            }
+            segit = "Közönség";
+            if (segitsegek.Contains<string>(segit))
+            {
+                telefonos.Enabled = true;
+            }
+            else
+            {
+                telefonos.Enabled = false;
+            }
+            segit = "Telefonos";
+            if (segitsegek.Contains<string>(segit))
+            {
+                kozonseg.Enabled = true;
+            }
+            else
+            {
+                kozonseg.Enabled = false;
             }
         }
 
@@ -394,6 +520,27 @@ namespace Legyen_ön_is_milliomos
             }
         }
 
+        private void kozonseg_Click(object sender, EventArgs e)
+        {
+            string helyesvalasz = jk.helyesBetu(N);
+            Kozonseg asdads = new Kozonseg(helyesvalasz);
+            asdads.ShowDialog();
+            kozonseg.Enabled = false;
+        }
+
+        private void telefonos_Click(object sender, EventArgs e)
+        {
+            string helyesvalasz = jk.helyesBetu(N);
+            switch (helyesvalasz)
+            {
+                case "A": firstAnswer.ForeColor = Color.Pink; break;
+                case "B": secondAnswear.ForeColor = Color.Pink; break;
+                case "C": thirdAnswear.ForeColor = Color.Pink; break;
+                case "D": forthAnswear.ForeColor = Color.Pink; break;
+            }
+            telefonos.Enabled = false;
+        }
+
         private void felezo_Click(object sender, EventArgs e)
         {
             string helyesvalasz = jk.helyesBetu(N);
@@ -428,27 +575,6 @@ namespace Legyen_ön_is_milliomos
             felezo.Enabled = false;
         }
 
-        private void telefonos_Click(object sender, EventArgs e)
-        {
-            string helyesvalasz = jk.helyesBetu(N);
-            switch (helyesvalasz)
-            {
-                case "A": firstAnswer.ForeColor = Color.Pink; break;
-                case "B": secondAnswear.ForeColor = Color.Pink; break;
-                case "C": thirdAnswear.ForeColor = Color.Pink; break;
-                case "D": forthAnswear.ForeColor = Color.Pink; break;
-            }
-            telefonos.Enabled = false;
-        }
-
-        private void kozonseg_Click(object sender, EventArgs e)
-        {
-            string helyesvalasz = jk.helyesBetu(N);
-            Kozonseg asdads = new Kozonseg(helyesvalasz);
-            asdads.ShowDialog();
-            kozonseg.Enabled = false;
-        }
-
         private void megallas_Click(object sender, EventArgs e)
         {
             dontRunHandler = true;
@@ -458,50 +584,10 @@ namespace Legyen_ön_is_milliomos
 
         private void btnExitGame_Click(object sender, EventArgs e)
         {
-            StreamWriter outputFile2 = new StreamWriter("mentesek.txt");
-            outputFile2.WriteLine("555555");
-            outputFile2.Close();
             mentett.insertRow(Properties.Settings.Default.playerName, pontszam, szintT, N);
             jk.win = "";
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void Jatek_Load(object sender, EventArgs e)
-        {
-            for (int i = 0; i < jk.questions.Count - 1; i++)
-            {
-                tomb[i] = r.Next(0, 4999);
-            }
-            text();
-            string segit = "Felező";
-            string[] segitsegek = Properties.Settings.Default.helps.Split(',');
-            if (segitsegek.Contains<string>(segit))
-            {
-                felezo.Enabled = true;
-            }
-            else
-            {
-                felezo.Enabled = false;
-            }
-            segit = "Közönség";
-            if (segitsegek.Contains<string>(segit))
-            {
-                telefonos.Enabled = true;
-            }
-            else
-            {
-                telefonos.Enabled = false;
-            }
-            segit = "Telefonos";
-            if (segitsegek.Contains<string>(segit))
-            {
-                kozonseg.Enabled = true;
-            }
-            else
-            {
-                kozonseg.Enabled = false;
-            }
         }
     }
 }

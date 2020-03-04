@@ -1,6 +1,6 @@
 ﻿namespace Legyen_ön_is_milliomos
 {
-    partial class Jatek
+    partial class MentettJatek
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Jatek));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MentettJatek));
+            this.label1 = new System.Windows.Forms.Label();
             this.kozonseg = new System.Windows.Forms.Label();
             this.telefonos = new System.Windows.Forms.Label();
             this.felezo = new System.Windows.Forms.Label();
@@ -54,8 +55,16 @@
             this.thirdAnswear = new System.Windows.Forms.Label();
             this.firstAnswer = new System.Windows.Forms.Label();
             this.Question = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(322, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "label1";
             // 
             // kozonseg
             // 
@@ -65,7 +74,7 @@
             this.kozonseg.Location = new System.Drawing.Point(717, 9);
             this.kozonseg.Name = "kozonseg";
             this.kozonseg.Size = new System.Drawing.Size(46, 36);
-            this.kozonseg.TabIndex = 72;
+            this.kozonseg.TabIndex = 98;
             this.kozonseg.Click += new System.EventHandler(this.kozonseg_Click);
             // 
             // telefonos
@@ -76,7 +85,7 @@
             this.telefonos.Location = new System.Drawing.Point(769, 9);
             this.telefonos.Name = "telefonos";
             this.telefonos.Size = new System.Drawing.Size(46, 36);
-            this.telefonos.TabIndex = 71;
+            this.telefonos.TabIndex = 97;
             this.telefonos.Click += new System.EventHandler(this.telefonos_Click);
             // 
             // felezo
@@ -86,7 +95,7 @@
             this.felezo.Location = new System.Drawing.Point(835, 9);
             this.felezo.Name = "felezo";
             this.felezo.Size = new System.Drawing.Size(46, 36);
-            this.felezo.TabIndex = 70;
+            this.felezo.TabIndex = 96;
             this.felezo.Click += new System.EventHandler(this.felezo_Click);
             // 
             // megallas
@@ -95,7 +104,7 @@
             this.megallas.Location = new System.Drawing.Point(105, 12);
             this.megallas.Name = "megallas";
             this.megallas.Size = new System.Drawing.Size(75, 23);
-            this.megallas.TabIndex = 69;
+            this.megallas.TabIndex = 95;
             this.megallas.Text = "Megállni";
             this.megallas.UseVisualStyleBackColor = true;
             this.megallas.Click += new System.EventHandler(this.megallas_Click);
@@ -110,7 +119,7 @@
             this.lvl15.Location = new System.Drawing.Point(765, 50);
             this.lvl15.Name = "lvl15";
             this.lvl15.Size = new System.Drawing.Size(117, 15);
-            this.lvl15.TabIndex = 68;
+            this.lvl15.TabIndex = 94;
             this.lvl15.Text = "15.      40 000 000 Ft";
             // 
             // lvl14
@@ -123,7 +132,7 @@
             this.lvl14.Location = new System.Drawing.Point(765, 67);
             this.lvl14.Name = "lvl14";
             this.lvl14.Size = new System.Drawing.Size(117, 15);
-            this.lvl14.TabIndex = 67;
+            this.lvl14.TabIndex = 93;
             this.lvl14.Text = "14.      20 000 000 Ft";
             // 
             // lvl13
@@ -136,7 +145,7 @@
             this.lvl13.Location = new System.Drawing.Point(765, 85);
             this.lvl13.Name = "lvl13";
             this.lvl13.Size = new System.Drawing.Size(117, 15);
-            this.lvl13.TabIndex = 66;
+            this.lvl13.TabIndex = 92;
             this.lvl13.Text = "13.      10 000 000 Ft";
             // 
             // lvl10
@@ -149,7 +158,7 @@
             this.lvl10.Location = new System.Drawing.Point(765, 139);
             this.lvl10.Name = "lvl10";
             this.lvl10.Size = new System.Drawing.Size(116, 15);
-            this.lvl10.TabIndex = 65;
+            this.lvl10.TabIndex = 91;
             this.lvl10.Text = "10.      1 500 000   Ft";
             // 
             // lvl11
@@ -162,7 +171,7 @@
             this.lvl11.Location = new System.Drawing.Point(765, 121);
             this.lvl11.Name = "lvl11";
             this.lvl11.Size = new System.Drawing.Size(116, 15);
-            this.lvl11.TabIndex = 64;
+            this.lvl11.TabIndex = 90;
             this.lvl11.Text = "11.      3 000 000   Ft";
             // 
             // lvl1
@@ -175,7 +184,7 @@
             this.lvl1.Location = new System.Drawing.Point(765, 301);
             this.lvl1.Name = "lvl1";
             this.lvl1.Size = new System.Drawing.Size(112, 15);
-            this.lvl1.TabIndex = 63;
+            this.lvl1.TabIndex = 89;
             this.lvl1.Text = "1.         5 000         Ft";
             // 
             // lvl2
@@ -188,7 +197,7 @@
             this.lvl2.Location = new System.Drawing.Point(765, 283);
             this.lvl2.Name = "lvl2";
             this.lvl2.Size = new System.Drawing.Size(113, 15);
-            this.lvl2.TabIndex = 62;
+            this.lvl2.TabIndex = 88;
             this.lvl2.Text = "2.        10 000        Ft";
             // 
             // lvl3
@@ -201,7 +210,7 @@
             this.lvl3.Location = new System.Drawing.Point(765, 265);
             this.lvl3.Name = "lvl3";
             this.lvl3.Size = new System.Drawing.Size(113, 15);
-            this.lvl3.TabIndex = 61;
+            this.lvl3.TabIndex = 87;
             this.lvl3.Text = "3.        25 000        Ft";
             // 
             // lvl4
@@ -214,7 +223,7 @@
             this.lvl4.Location = new System.Drawing.Point(765, 247);
             this.lvl4.Name = "lvl4";
             this.lvl4.Size = new System.Drawing.Size(113, 15);
-            this.lvl4.TabIndex = 60;
+            this.lvl4.TabIndex = 86;
             this.lvl4.Text = "4.        50 000        Ft";
             // 
             // lvl5
@@ -227,7 +236,7 @@
             this.lvl5.Location = new System.Drawing.Point(765, 229);
             this.lvl5.Name = "lvl5";
             this.lvl5.Size = new System.Drawing.Size(114, 15);
-            this.lvl5.TabIndex = 59;
+            this.lvl5.TabIndex = 85;
             this.lvl5.Text = "5.        100 000      Ft";
             // 
             // lvl6
@@ -240,7 +249,7 @@
             this.lvl6.Location = new System.Drawing.Point(765, 211);
             this.lvl6.Name = "lvl6";
             this.lvl6.Size = new System.Drawing.Size(114, 15);
-            this.lvl6.TabIndex = 58;
+            this.lvl6.TabIndex = 84;
             this.lvl6.Text = "6.        200 000      Ft";
             // 
             // lvl7
@@ -253,7 +262,7 @@
             this.lvl7.Location = new System.Drawing.Point(765, 193);
             this.lvl7.Name = "lvl7";
             this.lvl7.Size = new System.Drawing.Size(114, 15);
-            this.lvl7.TabIndex = 57;
+            this.lvl7.TabIndex = 83;
             this.lvl7.Text = "7.        300 000      Ft";
             // 
             // lvl8
@@ -266,7 +275,7 @@
             this.lvl8.Location = new System.Drawing.Point(765, 175);
             this.lvl8.Name = "lvl8";
             this.lvl8.Size = new System.Drawing.Size(114, 15);
-            this.lvl8.TabIndex = 56;
+            this.lvl8.TabIndex = 82;
             this.lvl8.Text = "8.        500 000      Ft";
             // 
             // lvl9
@@ -279,7 +288,7 @@
             this.lvl9.Location = new System.Drawing.Point(765, 157);
             this.lvl9.Name = "lvl9";
             this.lvl9.Size = new System.Drawing.Size(114, 15);
-            this.lvl9.TabIndex = 55;
+            this.lvl9.TabIndex = 81;
             this.lvl9.Text = "9.        800 000      Ft";
             // 
             // lvl12
@@ -292,7 +301,7 @@
             this.lvl12.Location = new System.Drawing.Point(765, 103);
             this.lvl12.Name = "lvl12";
             this.lvl12.Size = new System.Drawing.Size(116, 15);
-            this.lvl12.TabIndex = 54;
+            this.lvl12.TabIndex = 80;
             this.lvl12.Text = "12.      5 000 000   Ft";
             // 
             // btnExitGame
@@ -301,7 +310,7 @@
             this.btnExitGame.Location = new System.Drawing.Point(12, 13);
             this.btnExitGame.Name = "btnExitGame";
             this.btnExitGame.Size = new System.Drawing.Size(75, 23);
-            this.btnExitGame.TabIndex = 53;
+            this.btnExitGame.TabIndex = 79;
             this.btnExitGame.Text = "Kilépés";
             this.btnExitGame.UseVisualStyleBackColor = true;
             this.btnExitGame.Click += new System.EventHandler(this.btnExitGame_Click);
@@ -317,7 +326,7 @@
             this.forthAnswear.Location = new System.Drawing.Point(539, 469);
             this.forthAnswear.Name = "forthAnswear";
             this.forthAnswear.Size = new System.Drawing.Size(244, 64);
-            this.forthAnswear.TabIndex = 52;
+            this.forthAnswear.TabIndex = 78;
             this.forthAnswear.Text = "Negyedik válasz";
             this.forthAnswear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.forthAnswear.Click += new System.EventHandler(this.forthAnswear_Click);
@@ -333,7 +342,7 @@
             this.secondAnswear.Location = new System.Drawing.Point(535, 390);
             this.secondAnswear.Name = "secondAnswear";
             this.secondAnswear.Size = new System.Drawing.Size(259, 54);
-            this.secondAnswear.TabIndex = 51;
+            this.secondAnswear.TabIndex = 77;
             this.secondAnswear.Text = "Második válasz";
             this.secondAnswear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.secondAnswear.Click += new System.EventHandler(this.secondAnswear_Click);
@@ -349,7 +358,7 @@
             this.thirdAnswear.Location = new System.Drawing.Point(105, 469);
             this.thirdAnswear.Name = "thirdAnswear";
             this.thirdAnswear.Size = new System.Drawing.Size(253, 64);
-            this.thirdAnswear.TabIndex = 50;
+            this.thirdAnswear.TabIndex = 76;
             this.thirdAnswear.Text = "Harmadik válasz";
             this.thirdAnswear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.thirdAnswear.Click += new System.EventHandler(this.thirdAnswear_Click);
@@ -365,7 +374,7 @@
             this.firstAnswer.Location = new System.Drawing.Point(105, 390);
             this.firstAnswer.Name = "firstAnswer";
             this.firstAnswer.Size = new System.Drawing.Size(263, 65);
-            this.firstAnswer.TabIndex = 49;
+            this.firstAnswer.TabIndex = 75;
             this.firstAnswer.Text = "Első válasz";
             this.firstAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.firstAnswer.Click += new System.EventHandler(this.firstAnswer_Click);
@@ -381,21 +390,12 @@
             this.Question.Location = new System.Drawing.Point(141, 309);
             this.Question.Name = "Question";
             this.Question.Size = new System.Drawing.Size(558, 59);
-            this.Question.TabIndex = 48;
+            this.Question.TabIndex = 74;
             this.Question.Text = "Ide jön  a kérdés";
             this.Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Question.UseCompatibleTextRendering = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(322, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 73;
-            this.label1.Text = "label1";
-            // 
-            // Jatek
+            // MentettJatek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -429,9 +429,9 @@
             this.Controls.Add(this.firstAnswer);
             this.Controls.Add(this.Question);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Jatek";
-            this.Text = "Jatek";
-            this.Load += new System.EventHandler(this.Jatek_Load);
+            this.Name = "MentettJatek";
+            this.Text = "MentettJatek";
+            this.Load += new System.EventHandler(this.MentettJatek_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,6 +439,7 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label kozonseg;
         private System.Windows.Forms.Label telefonos;
         private System.Windows.Forms.Label felezo;
@@ -464,6 +465,5 @@
         private System.Windows.Forms.Label thirdAnswear;
         private System.Windows.Forms.Label firstAnswer;
         private System.Windows.Forms.Label Question;
-        private System.Windows.Forms.Label label1;
     }
 }

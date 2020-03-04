@@ -13,35 +13,20 @@ namespace Legyen_ön_is_milliomos
 {
     public partial class Ponttablazat : Form
     {
-        Jatek jatek = new Jatek();
-        string[] osszSor = File.ReadAllLines("pontszamok.txt", Encoding.UTF8);
-        public int[] pontszamook = new int[50000];
-        public string[] nevek = new string[50000];
-        public int[] idk = new int[50000];
-
+        Pontszam pt = new Pontszam();
+        List<int> pontszamook = new List<int>();
+        List<string> nevek = new List<string>();
+        List<string> idk = new List<string>();
+        List<string> ptList = new List<string>();
+        int osszSor = 0;
         public Ponttablazat()
         {
             InitializeComponent();
-            for (int i = 0; i < osszSor.Length; i++)
-            {
-                string[] adatok = osszSor[i].Split(';');
-                pontszamook[i] = Convert.ToInt32(adatok[1]);
-                nevek[i] = adatok[0];
-            }
         }
-
-        private List<Pontszam> GetPontszamList()
+        public int sorokSzama()
         {
-            var list = new List<Pontszam>();
-            for (int i = 0; i < osszSor.Length; i++)
-            {
-                list.Add(new Pontszam()
-                {
-                    YourName = nevek[i],
-                    Highscore = pontszamook[i]
-                });
-            }
-            return list;
+            osszSor = pt.select().Count;
+            return osszSor;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -51,7 +36,13 @@ namespace Legyen_ön_is_milliomos
                 for (int i = listScore.SelectedItems.Count - 1; i >= 0; i--)
                 {
                     ListViewItem itm = listScore.SelectedItems[i];
-                    listScore.Items[itm.Index].Remove();
+                    string pont = itm.ToString().Substring(15);
+                    string pont2 = pont.TrimEnd('}');
+                    int pont3 = Convert.ToInt32(pont2);
+                    int asd = listScore.SelectedIndices[i];
+                    listScore.Items.RemoveAt(itm.Index);
+                    label5.Text = Convert.ToString(pont3);
+                    pt.deletetRow(pont3);
                 }
             }
         }
@@ -64,25 +55,20 @@ namespace Legyen_ön_is_milliomos
 
         private void Ponttablazat_Load(object sender, EventArgs e)
         {
-            var pontSZ = GetPontszamList();
-            foreach (var person in pontSZ)
+            osszSor = sorokSzama();
+            ptList = pt.select();
+            listScore.Items.Clear();
+            for (int i = 0; i < osszSor; i++)
             {
-                var row = new string[] { person.YourName, Convert.ToString(person.Highscore) };
-                var lvi = new ListViewItem(row);
+                string[] adatok = ptList[i].Split(';');
+                idk.Add(adatok[0]);
+                nevek.Add(adatok[1]);
+                pontszamook.Add(Convert.ToInt32(adatok[2]));
+                var row = new string[] { nevek[i], Convert.ToString(pontszamook[i]) };
+                ListViewItem lvi = new ListViewItem(idk[i]);
+                lvi.SubItems.AddRange(row);
                 listScore.Items.Add(lvi);
             }
-        }
-
-        private void Ponttablazat_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            StreamWriter outputFile = new StreamWriter("pontszamok.txt");
-            var pontSZ = GetPontszamList();
-            foreach (var person in pontSZ)
-            {
-                var row = new string[] { person.YourName, Convert.ToString(person.Highscore) };
-                outputFile.WriteLine(row[0] + ";" + row[1]);
-            }
-            outputFile.Close();
         }
     }
 }

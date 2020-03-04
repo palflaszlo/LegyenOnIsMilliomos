@@ -36,8 +36,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.listScore = new System.Windows.Forms.ListView();
+            this.lvlid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvpontod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -104,26 +106,41 @@
             // 
             this.listScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listScore.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvlid,
             this.lvname,
             this.lvpontod});
             this.listScore.FullRowSelect = true;
             this.listScore.GridLines = true;
             this.listScore.Location = new System.Drawing.Point(414, 12);
             this.listScore.Name = "listScore";
-            this.listScore.Size = new System.Drawing.Size(250, 416);
+            this.listScore.Size = new System.Drawing.Size(245, 416);
             this.listScore.TabIndex = 7;
             this.listScore.UseCompatibleStateImageBehavior = false;
             this.listScore.View = System.Windows.Forms.View.Details;
             // 
+            // lvlid
+            // 
+            this.lvlid.Text = "ID";
+            this.lvlid.Width = 30;
+            // 
             // lvname
             // 
             this.lvname.Text = "Your name";
-            this.lvname.Width = 150;
+            this.lvname.Width = 117;
             // 
             // lvpontod
             // 
             this.lvpontod.Text = "Highscore";
             this.lvpontod.Width = 90;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(59, 226);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "label5";
             // 
             // Ponttablazat
             // 
@@ -132,6 +149,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
@@ -142,7 +160,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Ponttablazat";
             this.Text = "Ponttablazat";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Ponttablazat_FormClosing);
             this.Load += new System.EventHandler(this.Ponttablazat_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -160,5 +177,7 @@
         private System.Windows.Forms.ListView listScore;
         private System.Windows.Forms.ColumnHeader lvname;
         private System.Windows.Forms.ColumnHeader lvpontod;
+        private System.Windows.Forms.ColumnHeader lvlid;
+        private System.Windows.Forms.Label label5;
     }
 }
