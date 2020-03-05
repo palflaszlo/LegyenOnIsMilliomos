@@ -14,6 +14,7 @@ namespace Legyen_ön_is_milliomos
     public partial class Ponttablazat : Form
     {
         Pontszam pt = new Pontszam();
+        List<string> modok = new List<string>();
         List<int> pontszamook = new List<int>();
         List<string> nevek = new List<string>();
         List<string> idk = new List<string>();
@@ -38,10 +39,10 @@ namespace Legyen_ön_is_milliomos
                     ListViewItem itm = listScore.SelectedItems[i];
                     string pont = itm.ToString().Substring(15);
                     string pont2 = pont.TrimEnd('}');
+                    label5.Text = pont2;
                     int pont3 = Convert.ToInt32(pont2);
-                    int asd = listScore.SelectedIndices[i];
+                    //int asd = listScore.SelectedIndices[i];
                     listScore.Items.RemoveAt(itm.Index);
-                    label5.Text = Convert.ToString(pont3);
                     pt.deletetRow(pont3);
                 }
             }
@@ -64,7 +65,8 @@ namespace Legyen_ön_is_milliomos
                 idk.Add(adatok[0]);
                 nevek.Add(adatok[1]);
                 pontszamook.Add(Convert.ToInt32(adatok[2]));
-                var row = new string[] { nevek[i], Convert.ToString(pontszamook[i]) };
+                modok.Add(adatok[3]);
+                var row = new string[] { nevek[i], Convert.ToString(pontszamook[i]), modok[i] };
                 ListViewItem lvi = new ListViewItem(idk[i]);
                 lvi.SubItems.AddRange(row);
                 listScore.Items.Add(lvi);

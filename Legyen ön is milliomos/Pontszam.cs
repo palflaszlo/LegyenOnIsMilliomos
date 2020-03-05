@@ -12,10 +12,11 @@ namespace Legyen_ön_is_milliomos
     {
         public void createDatabase()
         {
-            string sql = @"CREATE TABLE IF NOT EXISTS pontszamok (
+            string sql = @"CREATE TABLE IF NOT EXISTS pontszam (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nev VARCHAR(1000) NOT NULL,
-                    pont INTEGER NOT NULL
+                    pont INTEGER NOT NULL,
+                    mod VARCHAR(1000) NOT NULL
                 )";
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=mydb.db"))
             {
@@ -27,10 +28,10 @@ namespace Legyen_ön_is_milliomos
             }
         }
 
-        public void insertRow(string name, int score)
+        public void insertRow(string name, int score, string mod)
         {
-            string sql = @"INSERT INTO pontszamok (nev, pont)
-                VALUES (@nev, @pont)";
+            string sql = @"INSERT INTO pontszam (nev, pont, mod)
+                VALUES (@nev, @pont, @mod)";
             using (SQLiteConnection conn = new SQLiteConnection(connectionString: "Data Source=mydb.db"))
             {
                 using (var oCmd = new SQLiteCommand(sql, conn))
@@ -38,6 +39,7 @@ namespace Legyen_ön_is_milliomos
                     conn.Open();
                     oCmd.Parameters.AddWithValue("@nev", name);
                     oCmd.Parameters.AddWithValue("@pont", score);
+                    oCmd.Parameters.AddWithValue("@mod", mod);
                     oCmd.ExecuteNonQuery();
                 }
             }
@@ -60,7 +62,7 @@ namespace Legyen_ön_is_milliomos
         public List<string> select()
         {
             List<string> sor = new List<string>();
-            string sql = @"SELECT * FROM pontszamok";
+            string sql = @"SELECT * FROM pontszam";
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=mydb.db"))
             {
                 using (var oCmd = new SQLiteCommand(sql, conn))
@@ -73,7 +75,8 @@ namespace Legyen_ön_is_milliomos
                             int id = rdr.GetInt32(0);
                             string name = rdr.GetString(1);
                             int scoree = rdr.GetInt32(2);
-                            sor.Add(Convert.ToString(id) + ';' + name + ';' + scoree);
+                            string mod = rdr.GetString(3);
+                            sor.Add(Convert.ToString(id) + ';' + name + ';' + scoree + ';' + mod);
                         }
                     }
                 }

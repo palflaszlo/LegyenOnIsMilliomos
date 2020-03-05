@@ -13,7 +13,6 @@ namespace Legyen_ön_is_milliomos
     public partial class fomenu : Form
     {
         mentes mentett = new mentes();
-
         public fomenu()
         {
             InitializeComponent();

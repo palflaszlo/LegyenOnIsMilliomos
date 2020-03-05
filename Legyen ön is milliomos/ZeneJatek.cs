@@ -22,7 +22,7 @@ namespace Legyen_ön_is_milliomos
 
         public Random r = new Random();
         JatekKerdesek jk = new JatekKerdesek();
-        ProfilBeallitasok pf = new ProfilBeallitasok();
+        Pontszam pTsz = new Pontszam();
         private int szintT = 1;
         private int N;
         private string betu = "A";
@@ -59,7 +59,6 @@ namespace Legyen_ön_is_milliomos
             myTimer.Interval = 1000;
             myTimer2.Elapsed += new ElapsedEventHandler(customfn2);
             myTimer2.Interval = 1000;
-            text();
         }
 
         public void text()
@@ -74,23 +73,44 @@ namespace Legyen_ön_is_milliomos
                     valaszD.Invoke(new Action(text));
                     return;
                 }
-                N = jk.getSor(szintT, tomb[szintT]);
-                picQu.Text = szintT + ".  " + jk.getKerdes(N);
-                valaszA.Text = jk.getValaszA(N);
-                valaszB.Text = jk.getValaszB(N);
-                valaszC.Text = jk.getValaszC(N);
-                valaszD.Text = jk.getValaszD(N);
-
-                valaszA.BackColor = Color.Black;
-                valaszB.BackColor = Color.Black;
-                valaszC.BackColor = Color.Black;
-                valaszD.BackColor = Color.Black;
+                if (jk.getSor(szintT, tomb[szintT]) == 16)
+                {
+                    pontszam = 16;
+                    pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "Képpes");
+                    string message = "You won the whole game!";
+                    string caption = "You are a millionare!";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    if (result == DialogResult.OK)
+                    {
+                        Jatek.ActiveForm.Close();
+                    }
+                }
+                else
+                {
+                    N = jk.getSor(szintT, tomb[szintT]);
+                    picQu.Text = szintT + ".  " + jk.getKerdes(N);
+                    valaszA.Text = jk.getValaszA(N);
+                    valaszB.Text = jk.getValaszB(N);
+                    valaszC.Text = jk.getValaszC(N);
+                    valaszD.Text = jk.getValaszD(N);
+                }
+                if (szintT != 1)
+                {
+                    pontszam++;
+                }
+                valaszA.ForeColor = Color.White;
+                valaszB.ForeColor = Color.White;
+                valaszC.ForeColor = Color.White;
+                valaszD.ForeColor = Color.White;
 
                 valaszA.Visible = true;
                 valaszB.Visible = true;
                 valaszC.Visible = true;
                 valaszD.Visible = true;
-
+                myTimer.Stop();
+                myTimer2.Stop();
                 switch (szintT)
                 {
                     case 1: lvl1.BackColor = Color.Orange; break;
@@ -150,13 +170,26 @@ namespace Legyen_ön_is_milliomos
 
         public void error()
         {
+            if (pontszam / 4 >= 5)
+            {
+                pontszam = 5;
+            }
+            else if (pontszam / 4 >= 10)
+            {
+                pontszam = 10;
+            }
+            else
+            {
+                pontszam = 0;
+            }
+            pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "képes");
             string message = "Worng! You lost!";
             string caption = "Game over!";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result;
             // Displays the MessageBox.
             result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 // Closes the parent form.
                 try
@@ -206,25 +239,23 @@ namespace Legyen_ön_is_milliomos
             if (dontRunHandler)
             {
                 betu = "A";
-                valaszA.BackColor = Color.Orange;
+                valaszA.ForeColor = Color.Orange;
                 string helyes = jk.helyesBetu(N);
                 switch (helyes)
                 {
-                    case "A": valaszA.BackColor = Color.Green; break;
-                    case "B": valaszB.BackColor = Color.Green; break;
-                    case "C": valaszC.BackColor = Color.Green; break;
-                    case "D": valaszD.BackColor = Color.Green; break;
+                    case "A": valaszA.ForeColor = Color.Green; break;
+                    case "B": valaszB.ForeColor = Color.Green; break;
+                    case "C": valaszC.ForeColor = Color.Green; break;
+                    case "D": valaszD.ForeColor = Color.Green; break;
                 }
                 //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
-                    // Closes the parent form.
                     Application.DoEvents();
                     this.Close();
                 }
@@ -232,7 +263,7 @@ namespace Legyen_ön_is_milliomos
             else
             {
                 betu = "A";
-                valaszA.BackColor = Color.Orange;
+                valaszA.ForeColor = Color.Orange;
                 myTimer.Start();
             }
         }
@@ -242,25 +273,23 @@ namespace Legyen_ön_is_milliomos
             if (dontRunHandler)
             {
                 betu = "B";
-                valaszB.BackColor = Color.Orange;
+                valaszB.ForeColor = Color.Orange;
                 string helyes = jk.helyesBetu(N);
                 switch (helyes)
                 {
-                    case "A": valaszA.BackColor = Color.Green; break;
-                    case "B": valaszB.BackColor = Color.Green; break;
-                    case "C": valaszC.BackColor = Color.Green; break;
-                    case "D": valaszD.BackColor = Color.Green; break;
+                    case "A": valaszA.ForeColor = Color.Green; break;
+                    case "B": valaszB.ForeColor = Color.Green; break;
+                    case "C": valaszC.ForeColor = Color.Green; break;
+                    case "D": valaszD.ForeColor = Color.Green; break;
                 }
                 //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
-                    // Closes the parent form.
                     Application.DoEvents();
                     this.Close();
                 }
@@ -268,7 +297,7 @@ namespace Legyen_ön_is_milliomos
             else
             {
                 betu = "B";
-                valaszB.BackColor = Color.Orange;
+                valaszB.ForeColor = Color.Orange;
                 myTimer.Start();
             }
         }
@@ -278,25 +307,23 @@ namespace Legyen_ön_is_milliomos
             if (dontRunHandler)
             {
                 betu = "C";
-                valaszC.BackColor = Color.Orange;
+                valaszC.ForeColor = Color.Orange;
                 string helyes = jk.helyesBetu(N);
                 switch (helyes)
                 {
-                    case "A": valaszA.BackColor = Color.Green; break;
-                    case "B": valaszB.BackColor = Color.Green; break;
-                    case "C": valaszC.BackColor = Color.Green; break;
-                    case "D": valaszD.BackColor = Color.Green; break;
+                    case "A": valaszA.ForeColor = Color.Green; break;
+                    case "B": valaszB.ForeColor = Color.Green; break;
+                    case "C": valaszC.ForeColor = Color.Green; break;
+                    case "D": valaszD.ForeColor = Color.Green; break;
                 }
                 //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
-                    // Closes the parent form.
                     Application.DoEvents();
                     this.Close();
                 }
@@ -304,7 +331,7 @@ namespace Legyen_ön_is_milliomos
             else
             {
                 betu = "C";
-                valaszC.BackColor = Color.Orange;
+                valaszC.ForeColor = Color.Orange;
                 myTimer.Start();
             }
         }
@@ -314,25 +341,23 @@ namespace Legyen_ön_is_milliomos
             if (dontRunHandler)
             {
                 betu = "D";
-                valaszD.BackColor = Color.Orange;
+                valaszD.ForeColor = Color.Orange;
                 string helyes = jk.helyesBetu(N);
                 switch (helyes)
                 {
-                    case "A": valaszA.BackColor = Color.Green; break;
-                    case "B": valaszB.BackColor = Color.Green; break;
-                    case "C": valaszC.BackColor = Color.Green; break;
-                    case "D": valaszD.BackColor = Color.Green; break;
+                    case "A": valaszA.ForeColor = Color.Green; break;
+                    case "B": valaszB.ForeColor = Color.Green; break;
+                    case "C": valaszC.ForeColor = Color.Green; break;
+                    case "D": valaszD.ForeColor = Color.Green; break;
                 }
                 //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
-                    // Closes the parent form.
                     Application.DoEvents();
                     this.Close();
                 }
@@ -340,7 +365,7 @@ namespace Legyen_ön_is_milliomos
             else
             {
                 betu = "D";
-                valaszD.BackColor = Color.Orange;
+                valaszD.ForeColor = Color.Orange;
                 myTimer.Start();
             }
         }
@@ -369,10 +394,10 @@ namespace Legyen_ön_is_milliomos
             string helyesvalasz = jk.helyesBetu(N);
             switch (helyesvalasz)
             {
-                case "A": valaszA.ForeColor = Color.Pink; break;
-                case "B": valaszB.ForeColor = Color.Pink; break;
-                case "C": valaszC.ForeColor = Color.Pink; break;
-                case "D": valaszD.ForeColor = Color.Pink; break;
+                case "A": valaszA.ForeColor = Color.Red; break;
+                case "B": valaszB.ForeColor = Color.Red; break;
+                case "C": valaszC.ForeColor = Color.Red; break;
+                case "D": valaszD.ForeColor = Color.Red; break;
             }
             telefonos.Enabled = false;
         }
@@ -408,10 +433,7 @@ namespace Legyen_ön_is_milliomos
                 case 2: valaszC.Visible = false; break;
                 case 3: valaszD.Visible = false; break;
             }
-            if (!valaszA.Visible || !valaszB.Visible || !valaszC.Visible || !valaszD.Visible)
-            {
-                felezo.Enabled = false;
-            }
+            felezo.Enabled = false;
         }
 
         private void megallas_Click(object sender, EventArgs e)

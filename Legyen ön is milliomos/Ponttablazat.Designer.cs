@@ -40,21 +40,21 @@
             this.lvname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvpontod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label5 = new System.Windows.Forms.Label();
+            this.lvlmode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 89);
+            this.label4.Location = new System.Drawing.Point(9, 110);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(395, 13);
+            this.label4.Size = new System.Drawing.Size(183, 45);
             this.label4.TabIndex = 13;
             this.label4.Text = "Ha már egy rekord nem kell, ki is törölheted, ha kijelölve a törlés gombra kattin" +
     "tasz.";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(12, 120);
+            this.btnDelete.Location = new System.Drawing.Point(12, 173);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 12;
@@ -65,10 +65,9 @@
             // label3
             // 
             this.label3.AutoEllipsis = true;
-            this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(286, 13);
+            this.label3.Size = new System.Drawing.Size(183, 31);
             this.label3.TabIndex = 11;
             this.label3.Text = "A pontszámod egyenlő a megválaszolt kérdéseid számával.";
             // 
@@ -108,12 +107,13 @@
             this.listScore.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lvlid,
             this.lvname,
-            this.lvpontod});
+            this.lvpontod,
+            this.lvlmode});
             this.listScore.FullRowSelect = true;
             this.listScore.GridLines = true;
-            this.listScore.Location = new System.Drawing.Point(414, 12);
+            this.listScore.Location = new System.Drawing.Point(308, 12);
             this.listScore.Name = "listScore";
-            this.listScore.Size = new System.Drawing.Size(245, 416);
+            this.listScore.Size = new System.Drawing.Size(342, 416);
             this.listScore.TabIndex = 7;
             this.listScore.UseCompatibleStateImageBehavior = false;
             this.listScore.View = System.Windows.Forms.View.Details;
@@ -121,12 +121,12 @@
             // lvlid
             // 
             this.lvlid.Text = "ID";
-            this.lvlid.Width = 30;
+            this.lvlid.Width = 49;
             // 
             // lvname
             // 
             this.lvname.Text = "Your name";
-            this.lvname.Width = 117;
+            this.lvname.Width = 110;
             // 
             // lvpontod
             // 
@@ -136,11 +136,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(59, 226);
+            this.label5.Location = new System.Drawing.Point(42, 341);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "label5";
+            // 
+            // lvlmode
+            // 
+            this.lvlmode.Text = "Mode";
+            this.lvlmode.Width = 81;
             // 
             // Ponttablazat
             // 
@@ -177,7 +182,8 @@
         private System.Windows.Forms.ListView listScore;
         private System.Windows.Forms.ColumnHeader lvname;
         private System.Windows.Forms.ColumnHeader lvpontod;
-        private System.Windows.Forms.ColumnHeader lvlid;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ColumnHeader lvlid;
+        private System.Windows.Forms.ColumnHeader lvlmode;
     }
 }

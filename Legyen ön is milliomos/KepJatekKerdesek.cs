@@ -11,87 +11,24 @@ namespace Legyen_ön_is_milliomos
     class KepJatekKerdesek
     {
         public Random r = new Random();
-        string[] osszSor = File.ReadAllLines("kerdes.txt", Encoding.UTF8);
-        string[] temakorok = File.ReadAllLines("temak.txt", Encoding.UTF8);
-        public int[] nehezsegek = new int[50000];
-        public string[] kerdesek = new string[50000];
-        public string[] valaszokA = new string[50000];
-        public string[] valaszokB = new string[50000];
-        public string[] valaszokC = new string[50000];
-        public string[] valaszokD = new string[50000];
-        public string[] kategoriak = new string[50000];
-        public string[] kategoriak2 = new string[50000];
-        public string[] helyesValaszok = new string[50000];
-        ProfilBeallitasok pf = new ProfilBeallitasok();
-        public string[] themakk = new string[50000];
+        public string[] osszSor = File.ReadAllLines("kepek.txt", Encoding.UTF8);
+        public List<Kepek> questions = new List<Kepek>();
 
         public KepJatekKerdesek()
         {
+            string HelyesValasz, link;
+            string[] Valasz = new string[4];
             for (int i = 0; i < osszSor.Length; i++)
             {
                 string[] adatok = osszSor[i].Split(';');
-                kategoriak2[i] = adatok[7];
-            }
-            for (int i = 0; i < temakorok.Length; i++)
-            {
-                string[] temak = temakorok[i].Split(';');
-                themakk[i] = temak[0];
-            }
-
-            if (Properties.Settings.Default.nehezseg.Equals("easy"))
-            {
-                int k = 0;
-                for (int i = 0; i < osszSor.Length; i++)
-                {
-                    string[] adatok = osszSor[i].Split(';');
-                    if (themakk.Contains<string>(kategoriak2[i]))
-                    {
-                        nehezsegek[k] = Convert.ToInt32(adatok[0]);
-                        kerdesek[k] = adatok[1];
-                        valaszokA[k] = adatok[2];
-                        valaszokB[k] = adatok[3];
-                        valaszokC[k] = adatok[4];
-                        valaszokD[k] = adatok[5];
-                        helyesValaszok[k] = adatok[6];
-                        kategoriak[k] = adatok[7];
-                        k++;
-                    }
-                }
-            }
-            else if (Properties.Settings.Default.nehezseg.Equals("normal"))
-            {
-                for (int i = 0; i < osszSor.Length; i++)
-                {
-                    string[] adatok = osszSor[i].Split(';');
-                    nehezsegek[i] = Convert.ToInt32(adatok[0]);
-                    kerdesek[i] = adatok[1];
-                    valaszokA[i] = adatok[2];
-                    valaszokB[i] = adatok[3];
-                    valaszokC[i] = adatok[4];
-                    valaszokD[i] = adatok[5];
-                    helyesValaszok[i] = adatok[6];
-                    kategoriak[i] = adatok[7];
-                }
-            }
-            else if (Properties.Settings.Default.nehezseg.Equals("hard"))
-            {
-                int k = 0;
-                for (int i = 0; i < osszSor.Length; i++)
-                {
-                    string[] adatok = osszSor[i].Split(';');
-                    if (themakk.Contains<string>(kategoriak2[i]))
-                    {
-                        nehezsegek[k] = Convert.ToInt32(adatok[0]);
-                        kerdesek[k] = adatok[1];
-                        valaszokA[k] = adatok[2];
-                        valaszokB[k] = adatok[3];
-                        valaszokC[k] = adatok[4];
-                        valaszokD[k] = adatok[5];
-                        helyesValaszok[k] = adatok[6];
-                        kategoriak[k] = adatok[7];
-                        k++;
-                    }
-                }
+                link = adatok[0];
+                Valasz[0] = adatok[1];
+                Valasz[1] = adatok[2];
+                Valasz[2] = adatok[3];
+                Valasz[3] = adatok[4];
+                HelyesValasz = adatok[5];
+                Kepek k = new Kepek(link, Valasz, HelyesValasz);
+                questions.Add(k);
             }
         }
 
@@ -108,65 +45,48 @@ namespace Legyen_ön_is_milliomos
             }
             else
             {
-                string message = "You won the whole game!";
-                string caption = "You are a millionare!";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result;
-
-                // Displays the MessageBox.
-                result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    // Closes the parent form.
-                    Jatek.ActiveForm.Close();
-                }
+                return 16;
             }
 
             return sor;
         }
 
-        public string getKerdes(int sor, int szint)
+        public string getLink(int sor)
         {
-            string kerdes = "Nincs semmi";
-            int j = sor;
-            kerdes = kerdesek[j];
-            return kerdes;
+            string link = "";
+            link = questions[sor].Link;
+            return link;
         }
 
-        public string getValaszA(int sor, int szint)
+        public string getValaszA(int sor)
         {
             string valaszA = "Nincs semmi";
-            int j = sor;
-            valaszA = valaszokA[j];
+            valaszA = questions[sor].Valaszok[0];
             return valaszA;
         }
-        public string getValaszB(int sor, int szint)
+        public string getValaszB(int sor)
         {
             string valaszB = "Nincs semmi";
-            int j = sor;
-            valaszB = valaszokB[j];
+            valaszB = questions[sor].Valaszok[1];
             return valaszB;
         }
-        public string getValaszC(int sor, int szint)
+        public string getValaszC(int sor)
         {
             string valaszC = "Nincs semmi";
-            int j = sor;
-            valaszC = valaszokC[j];
+            valaszC = questions[sor].Valaszok[2];
             return valaszC;
         }
-        public string getValaszD(int sor, int szint)
+        public string getValaszD(int sor)
         {
             string valaszD = "Nincs semmi";
-            int j = sor;
-            valaszD = valaszokD[j];
+            valaszD = questions[sor].Valaszok[3];
             return valaszD;
         }
 
         public string helyesBetu(int sor)
         {
             string valasz = "";
-            int j = sor;
-            valasz = helyesValaszok[j];
+            valasz = questions[sor].HelyesValasz;
             return valasz;
         }
     }

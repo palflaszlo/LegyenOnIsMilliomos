@@ -329,7 +329,7 @@
             this.picQu.Name = "picQu";
             this.picQu.Size = new System.Drawing.Size(565, 61);
             this.picQu.TabIndex = 81;
-            this.picQu.Text = "Mi van a képen?";
+            this.picQu.Text = "Ki festette ezt a képet?";
             this.picQu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBack
@@ -345,6 +345,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(9, 51);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(255, 223);
@@ -420,6 +421,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "KepJatek";
             this.Text = "KepJatek";
+            this.Load += new System.EventHandler(this.KepJatek_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

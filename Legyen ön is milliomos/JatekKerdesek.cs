@@ -15,7 +15,6 @@ namespace Legyen_ön_is_milliomos
         string[] temakorok = File.ReadAllLines("temak.txt", Encoding.UTF8);
         public List<Kerdes> questions = new List<Kerdes>();
         public List<string> kategoriak2 = new List<string>();
-        ProfilBeallitasok pf = new ProfilBeallitasok();
         public string[] themakk = new string[500];
         public string win = "";
 

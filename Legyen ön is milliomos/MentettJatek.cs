@@ -170,22 +170,15 @@ namespace Legyen_ön_is_milliomos
                 {
                     if (szintT == 16)
                     {
-                        jk.win = "won";
                         pontszam = 16;
-                        pTsz.insertRow(Properties.Settings.Default.playerName, pontszam);
-                        jk.win = "";
-                        Properties.Settings.Default.vege = false;
-                        Properties.Settings.Default.Save();
+                        pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "szöveges");
                         string message = "You won the whole game!";
                         string caption = "You are a millionare!";
                         MessageBoxButtons buttons = MessageBoxButtons.OK;
                         DialogResult result;
-
-                        // Displays the MessageBox.
                         result = MessageBox.Show(message, caption, buttons);
-                        if (result == System.Windows.Forms.DialogResult.OK)
+                        if (result == DialogResult.OK)
                         {
-                            // Closes the parent form.
                             MentettJatek.ActiveForm.Close();
                         }
                     }
@@ -269,8 +262,6 @@ namespace Legyen_ön_is_milliomos
 
         public void error()
         {
-            jk.win = "lost";
-            Properties.Settings.Default.vege = true;
             if (pontszam / 4 >= 5)
             {
                 pontszam = 5;
@@ -283,10 +274,7 @@ namespace Legyen_ön_is_milliomos
             {
                 pontszam = 0;
             }
-            pTsz.insertRow(Properties.Settings.Default.playerName, pontszam);
-            jk.win = "";
-            Properties.Settings.Default.vege = false;
-            Properties.Settings.Default.Save();
+            pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "szöveges");
             string message = "Worng! You lost! You only won the " + pontszam + ". level!";
             string caption = "Game over!";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -578,14 +566,11 @@ namespace Legyen_ön_is_milliomos
         private void megallas_Click(object sender, EventArgs e)
         {
             dontRunHandler = true;
-            jk.win = "quit";
-            Properties.Settings.Default.vege = true;
         }
 
         private void btnExitGame_Click(object sender, EventArgs e)
         {
             mentett.insertRow(Properties.Settings.Default.playerName, pontszam, szintT, N);
-            jk.win = "";
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

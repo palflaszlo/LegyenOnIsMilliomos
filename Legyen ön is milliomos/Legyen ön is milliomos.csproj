@@ -85,6 +85,7 @@
     <Compile Include="Jatekmenuk.Designer.cs">
       <DependentUpon>Jatekmenuk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kepek.cs" />
     <Compile Include="KepJatek.cs">
       <SubType>Form</SubType>
     </Compile>
