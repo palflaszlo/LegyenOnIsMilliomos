@@ -103,8 +103,11 @@
             this.Controls.Add(this.zenes);
             this.Controls.Add(this.kepes);
             this.Controls.Add(this.szoveges);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Jatekmenuk";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jatekmenuk";
             this.ResumeLayout(false);
 

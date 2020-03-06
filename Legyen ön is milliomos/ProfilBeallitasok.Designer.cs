@@ -234,8 +234,11 @@
             this.Controls.Add(this.profileName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ProfilBeallitasok";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProfilBeallitasok";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProfilBeallitasok_FormClosing);
             this.Load += new System.EventHandler(this.ProfilBeallitasok_Load);

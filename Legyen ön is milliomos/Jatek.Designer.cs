@@ -428,8 +428,11 @@
             this.Controls.Add(this.thirdAnswear);
             this.Controls.Add(this.firstAnswer);
             this.Controls.Add(this.Question);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Jatek";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jatek";
             this.Load += new System.EventHandler(this.Jatek_Load);
             this.ResumeLayout(false);

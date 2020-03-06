@@ -418,8 +418,11 @@
             this.Controls.Add(this.picQu);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "KepJatek";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KepJatek";
             this.Load += new System.EventHandler(this.KepJatek_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

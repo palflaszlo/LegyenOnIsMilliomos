@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Media;
+using WMPLib;
 using System.Timers;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +21,42 @@ namespace Legyen_ön_is_milliomos
         public int countDown2 = 0;
 
         public Random r = new Random();
-        JatekKerdesek jk = new JatekKerdesek();
+        ZeneKerdesek zk = new ZeneKerdesek();
         Pontszam pTsz = new Pontszam();
         private int szintT = 1;
         private int N;
         private string betu = "A";
-        public int[] tomb = new int[50000];
-        SoundPlayer sp;
-        string path = @"C:\Users\Rumpelstiltskin.Masterpiece\Desktop\szakdolgozat\Legyen ön is Milliomos\Legyen ön is Milliomos\bin\Debug\songs\";
+        string path = @"C:\Users\Rumpelstiltskin.Masterpiece\Desktop\Legyen ön is milliomos\Legyen ön is milliomos\bin\Debug\";
 
         public int pontszam;
+
+        WindowsMediaPlayer Player;
+
+        private void PlayFile(string path, string url)
+        {
+            Player = new WindowsMediaPlayer();
+            Player.PlayStateChange +=
+                new _WMPOCXEvents_PlayStateChangeEventHandler(Player_PlayStateChange);
+            Player.MediaError +=
+                new _WMPOCXEvents_MediaErrorEventHandler(Player_MediaError);
+            Player.URL = path + url;
+
+        }
+
+        private void Player_PlayStateChange(int NewState)
+        {
+            if ((WMPPlayState)NewState == WMPPlayState.wmppsStopped)
+            {
+                Player.controls.stop();
+            }
+        }
+
+        private void Player_MediaError(object pMediaObject)
+        {
+            MessageBox.Show("Cannot play media file.");
+            this.Close();
+        }
+
 
         private void customfn(object source, ElapsedEventArgs e)
         {
@@ -73,7 +99,7 @@ namespace Legyen_ön_is_milliomos
                     valaszD.Invoke(new Action(text));
                     return;
                 }
-                if (jk.getSor(szintT, tomb[szintT]) == 16)
+                if (zk.getSor(szintT, r.Next(zk.osszSor.Length)) == 16)
                 {
                     pontszam = 16;
                     pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "Képpes");
@@ -89,12 +115,11 @@ namespace Legyen_ön_is_milliomos
                 }
                 else
                 {
-                    N = jk.getSor(szintT, tomb[szintT]);
-                    picQu.Text = szintT + ".  " + jk.getKerdes(N);
-                    valaszA.Text = jk.getValaszA(N);
-                    valaszB.Text = jk.getValaszB(N);
-                    valaszC.Text = jk.getValaszC(N);
-                    valaszD.Text = jk.getValaszD(N);
+                    N = zk.getSor(szintT, r.Next(zk.osszSor.Length));
+                    valaszA.Text = zk.getValaszA(N);
+                    valaszB.Text = zk.getValaszB(N);
+                    valaszC.Text = zk.getValaszC(N);
+                    valaszD.Text = zk.getValaszD(N);
                 }
                 if (szintT != 1)
                 {
@@ -187,11 +212,9 @@ namespace Legyen_ön_is_milliomos
             string caption = "Game over!";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result;
-            // Displays the MessageBox.
             result = MessageBox.Show(message, caption, buttons);
             if (result == DialogResult.OK)
             {
-                // Closes the parent form.
                 try
                 {
                     if (valaszA.InvokeRequired || valaszB.InvokeRequired || valaszC.InvokeRequired || valaszD.InvokeRequired)
@@ -215,7 +238,7 @@ namespace Legyen_ön_is_milliomos
 
         private void getAnswear(string betu)
         {
-            if (jk.helyesBetu(N).Equals(betu))
+            if (zk.helyesBetu(N).Equals(betu))
             {
                 szintT++;
                 switch (betu)
@@ -225,7 +248,6 @@ namespace Legyen_ön_is_milliomos
                     case "C": valaszC.BackColor = Color.Green; break;
                     case "D": valaszD.BackColor = Color.Green; break;
                 }
-                //ide még egy zene jön
                 myTimer2.Start();
             }
             else
@@ -240,7 +262,7 @@ namespace Legyen_ön_is_milliomos
             {
                 betu = "A";
                 valaszA.ForeColor = Color.Orange;
-                string helyes = jk.helyesBetu(N);
+                string helyes = zk.helyesBetu(N);
                 switch (helyes)
                 {
                     case "A": valaszA.ForeColor = Color.Green; break;
@@ -248,7 +270,6 @@ namespace Legyen_ön_is_milliomos
                     case "C": valaszC.ForeColor = Color.Green; break;
                     case "D": valaszD.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -274,7 +295,7 @@ namespace Legyen_ön_is_milliomos
             {
                 betu = "B";
                 valaszB.ForeColor = Color.Orange;
-                string helyes = jk.helyesBetu(N);
+                string helyes = zk.helyesBetu(N);
                 switch (helyes)
                 {
                     case "A": valaszA.ForeColor = Color.Green; break;
@@ -282,7 +303,6 @@ namespace Legyen_ön_is_milliomos
                     case "C": valaszC.ForeColor = Color.Green; break;
                     case "D": valaszD.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -308,7 +328,7 @@ namespace Legyen_ön_is_milliomos
             {
                 betu = "C";
                 valaszC.ForeColor = Color.Orange;
-                string helyes = jk.helyesBetu(N);
+                string helyes = zk.helyesBetu(N);
                 switch (helyes)
                 {
                     case "A": valaszA.ForeColor = Color.Green; break;
@@ -316,7 +336,6 @@ namespace Legyen_ön_is_milliomos
                     case "C": valaszC.ForeColor = Color.Green; break;
                     case "D": valaszD.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -342,7 +361,7 @@ namespace Legyen_ön_is_milliomos
             {
                 betu = "D";
                 valaszD.ForeColor = Color.Orange;
-                string helyes = jk.helyesBetu(N);
+                string helyes = zk.helyesBetu(N);
                 switch (helyes)
                 {
                     case "A": valaszA.ForeColor = Color.Green; break;
@@ -350,7 +369,6 @@ namespace Legyen_ön_is_milliomos
                     case "C": valaszC.ForeColor = Color.Green; break;
                     case "D": valaszD.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
                 string message = "You gave up on this level. You won the " + szintT + "level";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -372,18 +390,18 @@ namespace Legyen_ön_is_milliomos
 
         private void btnZene_Click(object sender, EventArgs e)
         {
-            sp = new SoundPlayer(@"" + path + "Sophia Angeles - Gone (Lyrics) (online-audio-converter.com).wav");
-            sp.Play();
+            PlayFile(path, zk.getURL(N));
+            Player.controls.play();        
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            sp.Stop();
+            Player_PlayStateChange(1);
         }
 
         private void kozonseg_Click(object sender, EventArgs e)
         {
-            string helyesvalasz = jk.helyesBetu(N);
+            string helyesvalasz = zk.helyesBetu(N);
             Kozonseg asdads = new Kozonseg(helyesvalasz);
             asdads.ShowDialog();
             kozonseg.Enabled = false;
@@ -391,7 +409,7 @@ namespace Legyen_ön_is_milliomos
 
         private void telefonos_Click(object sender, EventArgs e)
         {
-            string helyesvalasz = jk.helyesBetu(N);
+            string helyesvalasz = zk.helyesBetu(N);
             switch (helyesvalasz)
             {
                 case "A": valaszA.ForeColor = Color.Red; break;
@@ -404,7 +422,7 @@ namespace Legyen_ön_is_milliomos
 
         private void felezo_Click(object sender, EventArgs e)
         {
-            string helyesvalasz = jk.helyesBetu(N);
+            string helyesvalasz = zk.helyesBetu(N);
             int HV = 0;
             switch (helyesvalasz)
             {
@@ -449,10 +467,6 @@ namespace Legyen_ön_is_milliomos
 
         private void ZeneJatek_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < jk.questions.Count - 1; i++)
-            {
-                tomb[i] = r.Next(0, 4999);
-            }
             text();
 
             string segit = "Felező";

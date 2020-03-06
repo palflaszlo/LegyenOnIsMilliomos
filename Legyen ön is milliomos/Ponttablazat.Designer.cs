@@ -39,8 +39,8 @@
             this.lvlid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvpontod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label5 = new System.Windows.Forms.Label();
             this.lvlmode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -133,6 +133,11 @@
             this.lvpontod.Text = "Highscore";
             this.lvpontod.Width = 90;
             // 
+            // lvlmode
+            // 
+            this.lvlmode.Text = "Mode";
+            this.lvlmode.Width = 81;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -141,11 +146,6 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "label5";
-            // 
-            // lvlmode
-            // 
-            this.lvlmode.Text = "Mode";
-            this.lvlmode.Width = 81;
             // 
             // Ponttablazat
             // 
@@ -162,8 +162,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.listScore);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Ponttablazat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ponttablazat";
             this.Load += new System.EventHandler(this.Ponttablazat_Load);
             this.ResumeLayout(false);

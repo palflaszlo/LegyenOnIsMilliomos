@@ -123,8 +123,11 @@
             this.Controls.Add(this.btnProfile);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btmStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "fomenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Legyen ön is milliomos";
             this.ResumeLayout(false);
 
