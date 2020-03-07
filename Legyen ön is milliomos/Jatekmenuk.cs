@@ -12,6 +12,7 @@ namespace Legyen_ön_is_milliomos
 {
     public partial class Jatekmenuk : Form
     {
+        ZeneJatek zj = new ZeneJatek();
         public Jatekmenuk()
         {
             InitializeComponent();
@@ -35,10 +36,21 @@ namespace Legyen_ön_is_milliomos
 
         private void zenes_Click(object sender, EventArgs e)
         {
-            ZeneJatek zene = new ZeneJatek();
-            this.Hide();
-            zene.ShowDialog();
-            this.Show();
+            if (zj.path.Equals(""))
+            {
+                string message = "Kérlek olvasd el a README.txt fájl, hogy játszhass ezzel a móddal!\nUtána lépj egyet vissza és kattins ide ismét.";
+                string caption = "Figyelem!";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+            }
+            else
+            {
+                ZeneJatek zene = new ZeneJatek();
+                this.Hide();
+                zene.ShowDialog();
+                this.Show();
+            }
         }
 
         private void segitE_Click(object sender, EventArgs e)

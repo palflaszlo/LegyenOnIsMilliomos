@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button1 = new System.Windows.Forms.Button();
             this.kozonsegChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.kozonsegChart)).BeginInit();
@@ -47,13 +47,20 @@
             // 
             // kozonsegChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.kozonsegChart.ChartAreas.Add(chartArea4);
+            this.kozonsegChart.BorderSkin.BackColor = System.Drawing.Color.White;
+            this.kozonsegChart.BorderSkin.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            chartArea1.Name = "ChartArea1";
+            this.kozonsegChart.ChartAreas.Add(chartArea1);
             this.kozonsegChart.Location = new System.Drawing.Point(13, 13);
             this.kozonsegChart.Name = "kozonsegChart";
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Series1";
-            this.kozonsegChart.Series.Add(series4);
+            this.kozonsegChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series1.BackSecondaryColor = System.Drawing.Color.Fuchsia;
+            series1.BorderColor = System.Drawing.Color.LightGreen;
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.Aqua;
+            series1.Name = "Series1";
+            this.kozonsegChart.Series.Add(series1);
             this.kozonsegChart.Size = new System.Drawing.Size(300, 300);
             this.kozonsegChart.TabIndex = 3;
             this.kozonsegChart.Text = "chart1";

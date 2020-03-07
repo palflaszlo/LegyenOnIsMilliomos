@@ -40,7 +40,6 @@
             this.lvname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvpontod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvlmode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -49,8 +48,8 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 45);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Ha már egy rekord nem kell, ki is törölheted, ha kijelölve a törlés gombra kattin" +
-    "tasz.";
+            this.label4.Text = "Ha már egy rekord nem kell, ki is törölheted, ha azt kijelölve a törlés gombra ka" +
+    "ttintasz.";
             // 
             // btnDelete
             // 
@@ -113,7 +112,7 @@
             this.listScore.GridLines = true;
             this.listScore.Location = new System.Drawing.Point(308, 12);
             this.listScore.Name = "listScore";
-            this.listScore.Size = new System.Drawing.Size(342, 416);
+            this.listScore.Size = new System.Drawing.Size(360, 416);
             this.listScore.TabIndex = 7;
             this.listScore.UseCompatibleStateImageBehavior = false;
             this.listScore.View = System.Windows.Forms.View.Details;
@@ -125,27 +124,18 @@
             // 
             // lvname
             // 
-            this.lvname.Text = "Your name";
+            this.lvname.Text = "Neved";
             this.lvname.Width = 110;
             // 
             // lvpontod
             // 
-            this.lvpontod.Text = "Highscore";
-            this.lvpontod.Width = 90;
+            this.lvpontod.Text = "Teljesített szintek";
+            this.lvpontod.Width = 103;
             // 
             // lvlmode
             // 
-            this.lvlmode.Text = "Mode";
+            this.lvlmode.Text = "Mód";
             this.lvlmode.Width = 81;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 341);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "label5";
             // 
             // Ponttablazat
             // 
@@ -154,7 +144,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
@@ -167,7 +156,7 @@
             this.MaximizeBox = false;
             this.Name = "Ponttablazat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ponttablazat";
+            this.Text = "Legyen ön is milliomos";
             this.Load += new System.EventHandler(this.Ponttablazat_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -185,7 +174,6 @@
         private System.Windows.Forms.ListView listScore;
         private System.Windows.Forms.ColumnHeader lvname;
         private System.Windows.Forms.ColumnHeader lvpontod;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColumnHeader lvlid;
         private System.Windows.Forms.ColumnHeader lvlmode;
     }

@@ -47,7 +47,7 @@ namespace Legyen_ön_is_milliomos
 
         public void deletetRow(int id)
         {          
-            string sql = @"DELETE FROM pontszamok WHERE id = @id";
+            string sql = @"DELETE FROM pontszam WHERE id = @id";
             using (SQLiteConnection conn = new SQLiteConnection("Data Source=mydb.db"))
             {
                     conn.Open();

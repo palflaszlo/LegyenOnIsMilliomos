@@ -24,6 +24,17 @@ namespace Legyen_ön_is_milliomos
             t2.Interval = 1000;
             pTsz.createDatabase();
             mentett.createDatabase();
+            for (int i = 0; i < jk.osszSor.Length; i++)
+            {
+                string[] adatok = jk.osszSor[i].Split(';');
+                kategoriak2.Add(adatok[7]);
+            }
+
+            for (int i = 0; i < temakorok.Length; i++)
+            {
+                string[] temak = temakorok[i].Split(';');
+                themakk[i] = temak[0];
+            }
         }
 
         public bool dontRunHandler;
@@ -31,7 +42,9 @@ namespace Legyen_ön_is_milliomos
         System.Timers.Timer t2 = new System.Timers.Timer();
         public int countDown = 0;
         public int countDown2 = 0;
-
+        string[] temakorok = File.ReadAllLines("temak.txt", Encoding.UTF8);
+        List<string> kategoriak2 = new List<string>();
+        string[] themakk = new string[500];
         public Random r = new Random();
         JatekKerdesek jk = new JatekKerdesek();
         Pontszam pTsz = new Pontszam();
@@ -39,9 +52,7 @@ namespace Legyen_ön_is_milliomos
         private int szintT = 1;
         private int N;
         private string betu = "A";
-        public int[] tomb = new int[50000];
 
-        public int pontszam = 1;
 
 
         private void OnTimeEvent(object sender, ElapsedEventArgs e)
@@ -66,6 +77,7 @@ namespace Legyen_ön_is_milliomos
 
         public void text()
         {
+            N = jk.getSor(szintT, r.Next(0, jk.osszSor.Length));
             try
             {
                 if (firstAnswer.InvokeRequired || secondAnswear.InvokeRequired || thirdAnswear.InvokeRequired || forthAnswear.InvokeRequired)
@@ -76,13 +88,12 @@ namespace Legyen_ön_is_milliomos
                     forthAnswear.Invoke(new Action(text));
                     return;
                 }
-                label1.Text = Properties.Settings.Default.playerName + ';' + pontszam;
-                if (jk.getSor(szintT, tomb[szintT]) == 16)
+                if (szintT == 16)
                 {
-                    pontszam = 16;
-                    pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "szöveges");
-                    string message = "You won the whole game!";
-                    string caption = "You are a millionare!";
+                    szintT = 15;
+                    pTsz.insertRow(Properties.Settings.Default.playerName, szintT, "szöveges");
+                    string message = "Megnyerted az egész játékot!";
+                    string caption = "Most már milliomos vagy!";
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
                     DialogResult result;
                     result = MessageBox.Show(message, caption, buttons);
@@ -93,74 +104,31 @@ namespace Legyen_ön_is_milliomos
                 }
                 else
                 {
-                    N = jk.getSor(szintT, tomb[szintT]);
-                    Question.Text = szintT + ".  " + jk.getKerdes(N);
-                    firstAnswer.Text = jk.getValaszA(N);
-                    secondAnswear.Text = jk.getValaszB(N);
-                    thirdAnswear.Text = jk.getValaszC(N);
-                    forthAnswear.Text = jk.getValaszD(N);
+                    if(Properties.Settings.Default.nehezseg == "easy")
+                    {
+                        if (!themakk.Contains<string>(jk.getKategoria(N)))
+                        {
+                            text();
+                        }
+                        else
+                        {
+                            Question.Text = szintT + ".  " + jk.getKerdes(N);
+                            firstAnswer.Text = jk.getValaszA(N);
+                            secondAnswear.Text = jk.getValaszB(N);
+                            thirdAnswear.Text = jk.getValaszC(N);
+                            forthAnswear.Text = jk.getValaszD(N);
+                        }
+                    }
+                    else if(Properties.Settings.Default.nehezseg == "normal")
+                    {
+                        Question.Text = szintT + ".  " + jk.getKerdes(N);
+                        firstAnswer.Text = jk.getValaszA(N);
+                        secondAnswear.Text = jk.getValaszB(N);
+                        thirdAnswear.Text = jk.getValaszC(N);
+                        forthAnswear.Text = jk.getValaszD(N);
+                    }
                 }
-                if (szintT != 1)
-                {
-                    pontszam++;
-                }
-                firstAnswer.ForeColor = Color.White;
-                secondAnswear.ForeColor = Color.White;
-                thirdAnswear.ForeColor = Color.White;
-                forthAnswear.ForeColor = Color.White;
-                firstAnswer.Visible = true;
-                secondAnswear.Visible = true;
-                forthAnswear.Visible = true;
-                thirdAnswear.Visible = true;
-                t.Stop();
-                t2.Stop();
-                switch (szintT)
-                {
-                    case 1: lvl1.BackColor = Color.Orange; lvl1.ForeColor = Color.Black; break;
-                    case 2:
-                        lvl2.BackColor = Color.Orange; lvl2.ForeColor = Color.Black;
-                        lvl1.BackColor = Color.Green; break;
-                    case 3:
-                        lvl3.BackColor = Color.Orange; lvl3.ForeColor = Color.Black;
-                        lvl2.BackColor = Color.Green; break;
-                    case 4:
-                        lvl4.BackColor = Color.Orange; lvl4.ForeColor = Color.Black;
-                        lvl3.BackColor = Color.Green; break;
-                    case 5:
-                        lvl5.BackColor = Color.Orange; lvl5.ForeColor = Color.Black;
-                        lvl4.BackColor = Color.Green; break;
-                    case 6:
-                        lvl6.BackColor = Color.Orange; lvl6.ForeColor = Color.Black;
-                        lvl5.BackColor = Color.Green; break;
-                    case 7:
-                        lvl7.BackColor = Color.Orange; lvl7.ForeColor = Color.Black;
-                        lvl6.BackColor = Color.Green; break;
-                    case 8:
-                        lvl8.BackColor = Color.Orange; lvl8.ForeColor = Color.Black;
-                        lvl7.BackColor = Color.Green; break;
-                    case 9:
-                        lvl9.BackColor = Color.Orange; lvl9.ForeColor = Color.Black;
-                        lvl8.BackColor = Color.Green; break;
-                    case 10:
-                        lvl10.BackColor = Color.Orange; lvl10.ForeColor = Color.Black;
-                        lvl9.BackColor = Color.Green; break;
-                    case 11:
-                        lvl11.BackColor = Color.Orange; lvl11.ForeColor = Color.Black;
-                        lvl10.BackColor = Color.Green; break;
-                    case 12:
-                        lvl12.BackColor = Color.Orange; lvl12.ForeColor = Color.Black;
-                        lvl11.BackColor = Color.Green; break;
-                    case 13:
-                        lvl13.BackColor = Color.Orange; lvl13.ForeColor = Color.Black;
-                        lvl12.BackColor = Color.Green; break;
-                    case 14:
-                        lvl14.BackColor = Color.Orange; lvl14.ForeColor = Color.Black;
-                        lvl13.BackColor = Color.Green; break;
-                    case 15:
-                        lvl15.BackColor = Color.Orange; lvl15.ForeColor = Color.Black;
-                        lvl14.BackColor = Color.Green; break;
-                    case 16: lvl15.BackColor = Color.Green; lvl15.ForeColor = Color.Black; break;
-                }
+                text2();
             }
             catch (Exception ex)
             {
@@ -168,22 +136,83 @@ namespace Legyen_ön_is_milliomos
             }
         }
 
-        public void error()
+        public void text2()
         {
-            if (pontszam / 4 >= 5)
+            firstAnswer.ForeColor = Color.White;
+            secondAnswear.ForeColor = Color.White;
+            thirdAnswear.ForeColor = Color.White;
+            forthAnswear.ForeColor = Color.White;
+            firstAnswer.Visible = true;
+            secondAnswear.Visible = true;
+            forthAnswear.Visible = true;
+            thirdAnswear.Visible = true;
+            t.Stop();
+            t2.Stop();
+            switch (szintT)
             {
-                pontszam = 5;
+                case 1: lvl1.BackColor = Color.Orange; lvl1.ForeColor = Color.Black; break;
+                case 2:
+                    lvl2.BackColor = Color.Orange; lvl2.ForeColor = Color.Black;
+                    lvl1.BackColor = Color.Green; break;
+                case 3:
+                    lvl3.BackColor = Color.Orange; lvl3.ForeColor = Color.Black;
+                    lvl2.BackColor = Color.Green; break;
+                case 4:
+                    lvl4.BackColor = Color.Orange; lvl4.ForeColor = Color.Black;
+                    lvl3.BackColor = Color.Green; break;
+                case 5:
+                    lvl5.BackColor = Color.Orange; lvl5.ForeColor = Color.Black;
+                    lvl4.BackColor = Color.Green; break;
+                case 6:
+                    lvl6.BackColor = Color.Orange; lvl6.ForeColor = Color.Black;
+                    lvl5.BackColor = Color.Green; break;
+                case 7:
+                    lvl7.BackColor = Color.Orange; lvl7.ForeColor = Color.Black;
+                    lvl6.BackColor = Color.Green; break;
+                case 8:
+                    lvl8.BackColor = Color.Orange; lvl8.ForeColor = Color.Black;
+                    lvl7.BackColor = Color.Green; break;
+                case 9:
+                    lvl9.BackColor = Color.Orange; lvl9.ForeColor = Color.Black;
+                    lvl8.BackColor = Color.Green; break;
+                case 10:
+                    lvl10.BackColor = Color.Orange; lvl10.ForeColor = Color.Black;
+                    lvl9.BackColor = Color.Green; break;
+                case 11:
+                    lvl11.BackColor = Color.Orange; lvl11.ForeColor = Color.Black;
+                    lvl10.BackColor = Color.Green; break;
+                case 12:
+                    lvl12.BackColor = Color.Orange; lvl12.ForeColor = Color.Black;
+                    lvl11.BackColor = Color.Green; break;
+                case 13:
+                    lvl13.BackColor = Color.Orange; lvl13.ForeColor = Color.Black;
+                    lvl12.BackColor = Color.Green; break;
+                case 14:
+                    lvl14.BackColor = Color.Orange; lvl14.ForeColor = Color.Black;
+                    lvl13.BackColor = Color.Green; break;
+                case 15:
+                    lvl15.BackColor = Color.Orange; lvl15.ForeColor = Color.Black;
+                    lvl14.BackColor = Color.Green; break;
+                case 16: lvl15.BackColor = Color.Green; lvl15.ForeColor = Color.Black; break;
             }
-            else if (pontszam / 4 >= 10)
+        }
+
+        public void error() 
+        {
+            if (szintT >= 5 && szintT < 10)
             {
-                pontszam = 10;
+                szintT = 5;
+            }
+            else if (szintT >= 10)
+            {
+                szintT = 10;
             }
             else
             {
-                pontszam = 0;
+                szintT = 0;
             }
-            pTsz.insertRow(Properties.Settings.Default.playerName, pontszam, "szöveges");
-            string message = "Worng! You lost! You only won the " + pontszam + ". level!";
+            pTsz.insertRow(Properties.Settings.Default.playerName, szintT, "szöveges");
+            string message = "Hibás válasz! Vesztettél! Megnyerted a(z) " + szintT + ". szintet!";
             string caption = "Game over!";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result;
@@ -194,18 +223,14 @@ namespace Legyen_ön_is_milliomos
                 {
                     if (firstAnswer.InvokeRequired || secondAnswear.InvokeRequired || thirdAnswear.InvokeRequired || forthAnswear.InvokeRequired)
                     {
-                        firstAnswer.Invoke(new Action(error));
-                        secondAnswear.Invoke(new Action(error));
-                        thirdAnswear.Invoke(new Action(error));
-                        forthAnswear.Invoke(new Action(error));
+                        firstAnswer.Invoke(new Action(this.Close));
+                        secondAnswear.Invoke(new Action(this.Close));
+                        thirdAnswear.Invoke(new Action(this.Close));
+                        forthAnswear.Invoke(new Action(this.Close));
                         return;
                     }
-
-                    t.Stop();
-                    //Application.DoEvents();
-                    this.Close();
                 }
-                catch (Exception ex)
+                catch (Exception ex) 
                 {
                     MessageBox.Show(ex.ToString());
                 }
@@ -226,7 +251,6 @@ namespace Legyen_ön_is_milliomos
                     case "C": thirdAnswear.ForeColor = Color.Green; break;
                     case "D": forthAnswear.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
             }
             else
             {
@@ -255,8 +279,8 @@ namespace Legyen_ön_is_milliomos
                     case "C": thirdAnswear.ForeColor = Color.Green; break;
                     case "D": forthAnswear.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
-                string message = "You gave up on this level. You won the " + (szintT - 1) + ". level";
+                pTsz.insertRow(Properties.Settings.Default.playerName, szintT - 1, "szöveges");
+                string message = "Feladtad ezen a szinten. Megnyerted a  " + (szintT - 1) + ". szintet";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
@@ -289,8 +313,8 @@ namespace Legyen_ön_is_milliomos
                     case "C": thirdAnswear.ForeColor = Color.Green; break;
                     case "D": forthAnswear.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
-                string message = "You gave up on this level. You won the " + (szintT - 1) + "level";
+                pTsz.insertRow(Properties.Settings.Default.playerName, szintT - 1, "szöveges");
+                string message = "Feladtad ezen a szinten. Megnyerted a  " + (szintT - 1) + ". szintet";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
@@ -323,8 +347,8 @@ namespace Legyen_ön_is_milliomos
                     case "C": thirdAnswear.ForeColor = Color.Green; break;
                     case "D": forthAnswear.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
-                string message = "You gave up on this level. You won the " + (szintT - 1) + "level";
+                pTsz.insertRow(Properties.Settings.Default.playerName, szintT - 1, "szöveges");
+                string message = "Feladtad ezen a szinten. Megnyerted a  " + (szintT - 1) + ". szintet";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
@@ -339,8 +363,6 @@ namespace Legyen_ön_is_milliomos
             {
                 betu = "C";
                 thirdAnswear.ForeColor = Color.Orange;
-                //Thread tt = new Thread(staart);
-                //tt.Start();
                 t.Start();
             }
         }
@@ -359,15 +381,14 @@ namespace Legyen_ön_is_milliomos
                     case "C": thirdAnswear.ForeColor = Color.Green; break;
                     case "D": forthAnswear.ForeColor = Color.Green; break;
                 }
-                //ide még egy zene jön
-                string message = "You gave up on this level. You won the " + (szintT - 1) + "level";
+                pTsz.insertRow(Properties.Settings.Default.playerName, szintT - 1, "szöveges");
+                string message = "Feladtad ezen a szinten. Megnyerted a  " + (szintT - 1) + ". szintet";
                 string caption = "Game over!";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
                 if (result == DialogResult.OK)
                 {
-                    //Application.DoEvents();
                     this.Close();
                 }
             }
@@ -375,8 +396,6 @@ namespace Legyen_ön_is_milliomos
             {
                 betu = "D";
                 forthAnswear.ForeColor = Color.Orange;
-                //Thread tt = new Thread(staart);
-                //tt.Start();
                 t.Start();
             }
         }
@@ -426,6 +445,7 @@ namespace Legyen_ön_is_milliomos
                 case "D": forthAnswear.ForeColor = Color.Red; break;
             }
             telefonos.Enabled = false;
+            
         }
 
         private void kozonseg_Click(object sender, EventArgs e)
@@ -443,17 +463,13 @@ namespace Legyen_ön_is_milliomos
 
         private void btnExitGame_Click(object sender, EventArgs e)
         {
-            mentett.insertRow(Properties.Settings.Default.playerName, pontszam, szintT, N);
+            mentett.insertRow(Properties.Settings.Default.playerName, szintT, szintT, N);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void Jatek_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < jk.questions.Count - 1; i++)
-            {
-                tomb[i] = r.Next(0, 4999);
-            }
             text();
             string segit = "Felező";
             string[] segitsegek = Properties.Settings.Default.helps.Split(',');

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MentettJatek));
-            this.label1 = new System.Windows.Forms.Label();
             this.kozonseg = new System.Windows.Forms.Label();
             this.telefonos = new System.Windows.Forms.Label();
             this.felezo = new System.Windows.Forms.Label();
@@ -56,15 +55,6 @@
             this.firstAnswer = new System.Windows.Forms.Label();
             this.Question = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(322, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 99;
-            this.label1.Text = "label1";
             // 
             // kozonseg
             // 
@@ -402,7 +392,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(895, 542);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.kozonseg);
             this.Controls.Add(this.telefonos);
             this.Controls.Add(this.felezo);
@@ -433,7 +422,7 @@
             this.MaximizeBox = false;
             this.Name = "MentettJatek";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MentettJatek";
+            this.Text = "Legyen ön is milliomos";
             this.Load += new System.EventHandler(this.MentettJatek_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -441,8 +430,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label kozonseg;
         private System.Windows.Forms.Label telefonos;
         private System.Windows.Forms.Label felezo;

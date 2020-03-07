@@ -24,7 +24,6 @@ namespace Legyen_ön_is_milliomos
             t2.Interval = 1000;
             pTsz.createDatabase();
             mentett.createDatabase();
-            label1.Text = mentett.select();
         }
 
         public bool dontRunHandler;
@@ -571,7 +570,6 @@ namespace Legyen_ön_is_milliomos
         private void btnExitGame_Click(object sender, EventArgs e)
         {
             mentett.insertRow(Properties.Settings.Default.playerName, pontszam, szintT, N);
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

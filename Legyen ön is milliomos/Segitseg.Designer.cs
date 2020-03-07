@@ -60,19 +60,19 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(12, 38);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 53);
+            this.label6.Size = new System.Drawing.Size(99, 99);
             this.label6.TabIndex = 86;
-            this.label6.Text = "Itt tudsz kilépni az aktuális játékból.";
+            this.label6.Text = "Itt tudsz kilépni az aktuális játékból, amivel el is mented ezt az egyet.";
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(117, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 67);
+            this.label5.Size = new System.Drawing.Size(186, 64);
             this.label5.TabIndex = 85;
-            this.label5.Text = "A megállni gomra kattintva feladja a játékot, de még utoljára tipelhet, hogy háth" +
-    "a eltalálta volna a választ.";
+            this.label5.Text = "A megállni gomra kattintva fel tudod adni a játékot, de még utoljára tipelhetsz, " +
+    "hogy hátha eltaláltad volna a választ.";
             // 
             // label4
             // 
@@ -99,7 +99,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(314, 423);
+            this.label2.Location = new System.Drawing.Point(312, 413);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(260, 45);
             this.label2.TabIndex = 82;
@@ -333,7 +333,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(537, 68);
+            this.label7.Location = new System.Drawing.Point(537, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(159, 87);
             this.label7.TabIndex = 104;
@@ -376,7 +376,7 @@
             this.MaximizeBox = false;
             this.Name = "Segitseg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Segitseg";
+            this.Text = "Legyen ön is milliomos";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,7 +19,6 @@ namespace Legyen_ön_is_milliomos
 
         private void btnExitGame_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

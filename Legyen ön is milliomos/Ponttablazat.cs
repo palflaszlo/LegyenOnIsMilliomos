@@ -39,9 +39,7 @@ namespace Legyen_ön_is_milliomos
                     ListViewItem itm = listScore.SelectedItems[i];
                     string pont = itm.ToString().Substring(15);
                     string pont2 = pont.TrimEnd('}');
-                    label5.Text = pont2;
                     int pont3 = Convert.ToInt32(pont2);
-                    //int asd = listScore.SelectedIndices[i];
                     listScore.Items.RemoveAt(itm.Index);
                     pt.deletetRow(pont3);
                 }
@@ -50,7 +48,6 @@ namespace Legyen_ön_is_milliomos
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

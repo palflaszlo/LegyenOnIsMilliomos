@@ -238,7 +238,7 @@
             this.MaximizeBox = false;
             this.Name = "UjKerdesek";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UjKerdesek";
+            this.Text = "Legyen ön is milliomos";
             this.ResumeLayout(false);
             this.PerformLayout();
 

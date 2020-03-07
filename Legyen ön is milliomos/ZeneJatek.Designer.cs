@@ -361,7 +361,7 @@
             this.picQu.Name = "picQu";
             this.picQu.Size = new System.Drawing.Size(565, 61);
             this.picQu.TabIndex = 106;
-            this.picQu.Text = "Mi van a képen?";
+            this.picQu.Text = "Ki az előadó?";
             this.picQu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBack
@@ -435,7 +435,7 @@
             this.MaximizeBox = false;
             this.Name = "ZeneJatek";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ZeneJatek";
+            this.Text = "Legyen ön is milliomos";
             this.Load += new System.EventHandler(this.ZeneJatek_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

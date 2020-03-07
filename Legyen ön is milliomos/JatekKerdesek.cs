@@ -11,119 +11,62 @@ namespace Legyen_ön_is_milliomos
     class JatekKerdesek
     {
         public Random r = new Random();
-        string[] osszSor = File.ReadAllLines("kerdes.txt", Encoding.UTF8);
-        string[] temakorok = File.ReadAllLines("temak.txt", Encoding.UTF8);
+        public string[] osszSor = File.ReadAllLines("kerdes.txt", Encoding.UTF8);
         public List<Kerdes> questions = new List<Kerdes>();
-        public List<string> kategoriak2 = new List<string>();
-        public string[] themakk = new string[500];
-        public string win = "";
 
         public JatekKerdesek()
         {
+            int Nehezseg;
+            string Kerdes_, HelyesValasz, Kategoria;
+            string[] Valasz = new string[4];
             for (int i = 0; i < osszSor.Length; i++)
             {
                 string[] adatok = osszSor[i].Split(';');
-                kategoriak2.Add(adatok[7]);
+                Nehezseg = Convert.ToInt32(adatok[0]);
+                Kerdes_ = adatok[1];
+                Valasz[0] = adatok[2];
+                Valasz[1] = adatok[3];
+                Valasz[2] = adatok[4];
+                Valasz[3] = adatok[5];
+                HelyesValasz = adatok[6];
+                Kategoria = adatok[7];
+                Kerdes k = new Kerdes(Nehezseg, Kerdes_, Valasz, Kategoria, HelyesValasz);
+                questions.Add(k);
             }
-
-            for (int i = 0; i < temakorok.Length; i++)
-            {
-                string[] temak = temakorok[i].Split(';');
-                themakk[i] = temak[0];
-            }
-
-            if (Properties.Settings.Default.nehezseg.Equals("easy"))
-            {
-                int Nehezseg;
-                string Kerdes_, HelyesValasz, Kategoria;
-                string[] Valasz = new string[4];
-
-                for (int i = 0; i < osszSor.Length; i++)
-                {
-                    string[] adatok = osszSor[i].Split(';');
-                    if (themakk.Contains<string>(kategoriak2[i]))
-                    {
-                        Nehezseg = Convert.ToInt32(adatok[0]);
-                        Kerdes_ = adatok[1];
-                        Valasz[0] = adatok[2];
-                        Valasz[1] = adatok[3];
-                        Valasz[2] = adatok[4];
-                        Valasz[3] = adatok[5];
-                        HelyesValasz = adatok[6];
-                        Kategoria = adatok[7];
-                        Kerdes k = new Kerdes(Nehezseg, Kerdes_, Valasz, Kategoria, HelyesValasz);
-                        questions.Add(k);
-                    }
-                }
-            }
-
-            else if (Properties.Settings.Default.nehezseg.Equals("normal"))
-            {
-                int Nehezseg;
-                string Kerdes_, HelyesValasz, Kategoria;
-                string[] Valasz = new string[4];
-
-                for (int i = 0; i < osszSor.Length; i++)
-                {
-                    string[] adatok = osszSor[i].Split(';');
-
-                    Nehezseg = Convert.ToInt32(adatok[0]);
-                    Kerdes_ = adatok[1];
-
-                    Valasz[0] = adatok[2];
-                    Valasz[1] = adatok[3];
-                    Valasz[2] = adatok[4];
-                    Valasz[3] = adatok[5];
-                    HelyesValasz = adatok[6];
-                    Kategoria = adatok[7];
-                    Kerdes k = new Kerdes(Nehezseg, Kerdes_, Valasz, Kategoria, HelyesValasz);
-                    questions.Add(k);
-                }
-            }
-
-            else if (Properties.Settings.Default.nehezseg.Equals("hard"))
-            {
-                int Nehezseg;
-                string Kerdes_, HelyesValasz, Kategoria;
-                string[] Valasz = new string[4];
-
-                for (int i = 0; i < osszSor.Length; i++)
-                {
-                    string[] adatok = osszSor[i].Split(';');
-                    if (themakk.Contains<string>(kategoriak2[i]))
-                    {
-                        Nehezseg = Convert.ToInt32(adatok[0]);
-                        Kerdes_ = adatok[1];
-                        Valasz[0] = adatok[2];
-                        Valasz[1] = adatok[3];
-                        Valasz[2] = adatok[4];
-                        Valasz[3] = adatok[5];
-                        HelyesValasz = adatok[6];
-                        Kategoria = adatok[7];
-                        Kerdes k = new Kerdes(Nehezseg, Kerdes_, Valasz, Kategoria, HelyesValasz);
-                        questions.Add(k);
-                    }
-                }
-            }
-
         }
 
         public int getSor(int szint, int random)
         {
             int sor = 0;
-            if (szint > 0 && szint < 8)
+            int nehez = questions[random].Nehezseg;
+            if (szint > 0 && szint < 5)
             {
-                sor = random;
+                if (nehez > 0 && nehez < 5)
+                    sor = random;
+                else getSor(szint, r.Next(0, osszSor.Length));
             }
-            else if (szint > 7 && szint < 16)
+            else if (szint > 4 && szint < 8)
             {
-                sor = random;
+                if (szint > 4 && szint < 8)
+                    sor = random;
+                else getSor(szint, r.Next(0, osszSor.Length));
+            }
+            else if (szint > 7 && szint < 11)
+            {
+                if (szint > 7 && szint < 11)
+                    sor = random;
+                else getSor(szint, r.Next(0, osszSor.Length));
+            }
+            else if (szint > 10 && szint < 16)
+            {
+                if (szint > 10 && szint < 16)
+                    sor = random;
+                else getSor(szint, r.Next(0, osszSor.Length));
             }
             else
             {
                 return 16;
             }
-
             return sor;
         }
 
@@ -162,6 +105,12 @@ namespace Legyen_ön_is_milliomos
             string valasz = "";
             valasz = questions[sor].HelyesValasz;
             return valasz;
+        }
+        public string getKategoria(int sor)
+        {
+            string kategoria = "";
+            kategoria = questions[sor].Kategoria;
+            return kategoria;
         }
     }
 }

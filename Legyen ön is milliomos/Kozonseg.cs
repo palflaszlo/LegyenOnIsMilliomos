@@ -63,7 +63,6 @@ namespace Legyen_ön_is_milliomos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

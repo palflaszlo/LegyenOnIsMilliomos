@@ -13,6 +13,7 @@ namespace Legyen_ön_is_milliomos
     public partial class fomenu : Form
     {
         mentes mentett = new mentes();
+        ProfilBeallitasok pf = new ProfilBeallitasok();
         public fomenu()
         {
             InitializeComponent();
@@ -28,10 +29,28 @@ namespace Legyen_ön_is_milliomos
         
         private void btmStart_Click(object sender, EventArgs e)
         {
-            Jatekmenuk jatekFormok = new Jatekmenuk();
-            this.Hide();
-            jatekFormok.ShowDialog();
-            this.Show();
+            if (Properties.Settings.Default.playerName.Equals(""))
+            {
+                string message = "Nem választottál ki támát vagy nehézségi szintet vagy nem írtál be nevet vagy nem válaszottál ki segítséget!";
+                string caption = "Figyelem!";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == DialogResult.OK)
+                {
+                    ProfilBeallitasok profil = new ProfilBeallitasok();
+                    this.Hide();
+                    profil.ShowDialog();
+                    this.Show();
+                }
+            }
+            else
+            {
+                Jatekmenuk jatekFormok = new Jatekmenuk();
+                this.Hide();
+                jatekFormok.ShowDialog();
+                this.Show();
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

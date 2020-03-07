@@ -34,9 +34,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,19 +46,20 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(372, 95);
+            this.label8.Location = new System.Drawing.Point(372, 80);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 41);
+            this.label8.Size = new System.Drawing.Size(160, 56);
             this.label8.TabIndex = 29;
-            this.label8.Text = "Nehéz szinten csak azok jelennek meg, amelyeket nem  jelöltél be.";
+            this.label8.Text = "Ha nehéz szinten akarsz játszani, csak azokat jelöld be, amelyeket neked nehezek " +
+    "és kapcsold a könnyű fokra.";
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(372, 57);
+            this.label7.Location = new System.Drawing.Point(372, 53);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 41);
+            this.label7.Size = new System.Drawing.Size(160, 29);
             this.label7.TabIndex = 28;
-            this.label7.Text = "Normál szinten vegyesen jelennek meg a  témakörök.";
+            this.label7.Text = "Normál szinten  az összes témakör megjelennik.";
             // 
             // label6
             // 
@@ -91,16 +90,6 @@
             this.checkedListBox2.Size = new System.Drawing.Size(120, 94);
             this.checkedListBox2.TabIndex = 25;
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(657, 383);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 13);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Legyen majd profilkép is";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -109,18 +98,6 @@
             this.label3.Size = new System.Drawing.Size(84, 13);
             this.label3.TabIndex = 23;
             this.label3.Text = "Nehézségi szint:";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(271, 119);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(56, 17);
-            this.radioButton3.TabIndex = 22;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Nehéz";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -224,9 +201,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkedListBox2);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label2);
@@ -239,7 +214,7 @@
             this.MaximizeBox = false;
             this.Name = "ProfilBeallitasok";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProfilBeallitasok";
+            this.Text = "Legyen ön is milliomos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProfilBeallitasok_FormClosing);
             this.Load += new System.EventHandler(this.ProfilBeallitasok_Load);
             this.ResumeLayout(false);
@@ -254,9 +229,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;

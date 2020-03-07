@@ -108,7 +108,7 @@
             this.MaximizeBox = false;
             this.Name = "Jatekmenuk";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Jatekmenuk";
+            this.Text = "Legyen ön is milliomos";
             this.ResumeLayout(false);
 
         }

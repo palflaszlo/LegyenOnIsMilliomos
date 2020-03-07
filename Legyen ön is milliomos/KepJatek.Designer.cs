@@ -338,7 +338,7 @@
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 80;
-            this.btnBack.Text = "Vissza";
+            this.btnBack.Text = "Kilépés";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -423,7 +423,7 @@
             this.MaximizeBox = false;
             this.Name = "KepJatek";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KepJatek";
+            this.Text = "Legyen ön is milliomos";
             this.Load += new System.EventHandler(this.KepJatek_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

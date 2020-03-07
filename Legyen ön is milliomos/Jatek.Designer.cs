@@ -54,7 +54,6 @@
             this.thirdAnswear = new System.Windows.Forms.Label();
             this.firstAnswer = new System.Windows.Forms.Label();
             this.Question = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // kozonseg
@@ -386,15 +385,6 @@
             this.Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Question.UseCompatibleTextRendering = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(322, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 73;
-            this.label1.Text = "label1";
-            // 
             // Jatek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,7 +392,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(895, 542);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.kozonseg);
             this.Controls.Add(this.telefonos);
             this.Controls.Add(this.felezo);
@@ -467,6 +456,5 @@
         private System.Windows.Forms.Label thirdAnswear;
         private System.Windows.Forms.Label firstAnswer;
         private System.Windows.Forms.Label Question;
-        private System.Windows.Forms.Label label1;
     }
 }
