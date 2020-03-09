@@ -39,7 +39,7 @@ namespace Legyen_ön_is_milliomos
             {
                 sor = random;
             }
-            else if (szint > 7 && szint < 16)
+            else if (szint > 6 && szint < 16)
             {
                 sor = random;
             }
