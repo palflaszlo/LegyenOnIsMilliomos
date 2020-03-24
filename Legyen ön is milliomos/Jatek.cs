@@ -15,6 +15,8 @@ namespace Legyen_ön_is_milliomos
 {
     public partial class Jatek : Form
     {
+        List<string> lista = new List<string>();
+        public List<string> segedLista = new List<string>();
         public Jatek()
         {
             InitializeComponent();
@@ -24,16 +26,20 @@ namespace Legyen_ön_is_milliomos
             t2.Interval = 1000;
             pTsz.createDatabase();
             mentett.createDatabase();
-            for (int i = 0; i < jk.osszSor.Length; i++)
+            StreamReader temakorok = new StreamReader("temak.txt");
+            while (!temakorok.EndOfStream)
             {
-                string[] adatok = jk.osszSor[i].Split(';');
-                kategoriak2.Add(adatok[7]);
+                string sor = temakorok.ReadLine();
+                lista.Add(sor);
+                
             }
-
-            for (int i = 0; i < temakorok.Length; i++)
+            foreach (string item in lista)
             {
-                string[] temak = temakorok[i].Split(';');
-                themakk[i] = temak[0];
+                string[] temak = item.Split(';');
+                for (int i = 0; i < temak.Length; i++)
+                {
+                    segedLista.Add(temak[i]);
+                }
             }
         }
 
@@ -42,9 +48,7 @@ namespace Legyen_ön_is_milliomos
         System.Timers.Timer t2 = new System.Timers.Timer();
         public int countDown = 0;
         public int countDown2 = 0;
-        string[] temakorok = File.ReadAllLines("temak.txt", Encoding.UTF8);
-        List<string> kategoriak2 = new List<string>();
-        string[] themakk = new string[500];
+        
         public Random r = new Random();
         JatekKerdesek jk = new JatekKerdesek();
         Pontszam pTsz = new Pontszam();
@@ -104,9 +108,13 @@ namespace Legyen_ön_is_milliomos
                 }
                 else
                 {
-                    if(Properties.Settings.Default.nehezseg == "easy")
+                    if (Properties.Settings.Default.nehezseg == "easy")
                     {
-                        if (!themakk.Contains<string>(jk.getKategoria(N)))
+                        foreach (var item in segedLista)
+                        {
+                            label1.Text += item + ";";
+                        }
+                        if (!segedLista.Contains<string>(jk.getKategoria(N)))
                         {
                             text();
                         }
@@ -180,7 +188,7 @@ namespace Legyen_ön_is_milliomos
                     lvl9.BackColor = Color.Green; break;
                 case 11:
                     lvl11.BackColor = Color.Orange; lvl11.ForeColor = Color.Black;
-                    lvl10.BackColor = Color.Green; break;
+                    lvl10.BackColor = Color.Green; lvl10.ForeColor = Color.White; break;
                 case 12:
                     lvl12.BackColor = Color.Orange; lvl12.ForeColor = Color.Black;
                     lvl11.BackColor = Color.Green; break;

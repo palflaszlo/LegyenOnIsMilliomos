@@ -92,7 +92,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(733, 413);
+            this.btnBack.Location = new System.Drawing.Point(140, 403);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(55, 25);
             this.btnBack.TabIndex = 8;
@@ -102,7 +102,6 @@
             // 
             // listScore
             // 
-            this.listScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listScore.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lvlid,
             this.lvname,
@@ -110,7 +109,7 @@
             this.lvlmode});
             this.listScore.FullRowSelect = true;
             this.listScore.GridLines = true;
-            this.listScore.Location = new System.Drawing.Point(308, 12);
+            this.listScore.Location = new System.Drawing.Point(216, 12);
             this.listScore.Name = "listScore";
             this.listScore.Size = new System.Drawing.Size(360, 416);
             this.listScore.TabIndex = 7;
@@ -141,9 +140,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(595, 443);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);

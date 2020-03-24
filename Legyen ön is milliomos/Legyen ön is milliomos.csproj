@@ -128,6 +128,12 @@
     <Compile Include="Segitseg.Designer.cs">
       <DependentUpon>Segitseg.cs</DependentUpon>
     </Compile>
+    <Compile Include="UjKepvagyZene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UjKepvagyZene.Designer.cs">
+      <DependentUpon>UjKepvagyZene.cs</DependentUpon>
+    </Compile>
     <Compile Include="UjKerdesek.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </Compile>
     <EmbeddedResource Include="Segitseg.resx">
       <DependentUpon>Segitseg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UjKepvagyZene.resx">
+      <DependentUpon>UjKepvagyZene.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UjKerdesek.resx">
       <DependentUpon>UjKerdesek.cs</DependentUpon>

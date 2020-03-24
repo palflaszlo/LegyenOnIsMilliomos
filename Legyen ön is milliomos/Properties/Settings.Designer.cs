@@ -73,42 +73,6 @@ namespace Legyen_ön_is_milliomos.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string questionTags {
-            get {
-                return ((string)(this["questionTags"]));
-            }
-            set {
-                this["questionTags"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string themes {
-            get {
-                return ((string)(this["themes"]));
-            }
-            set {
-                this["themes"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int ID {
-            get {
-                return ((int)(this["ID"]));
-            }
-            set {
-                this["ID"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool mentes {
             get {
@@ -116,18 +80,6 @@ namespace Legyen_ön_is_milliomos.Properties {
             }
             set {
                 this["mentes"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool vege {
-            get {
-                return ((bool)(this["vege"]));
-            }
-            set {
-                this["vege"] = value;
             }
         }
     }

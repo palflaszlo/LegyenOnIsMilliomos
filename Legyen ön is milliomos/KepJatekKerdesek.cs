@@ -12,22 +12,24 @@ namespace Legyen_ön_is_milliomos
     {
         public Random r = new Random();
         public string[] osszSor = File.ReadAllLines("kepek.txt", Encoding.UTF8);
+        public string[] path = File.ReadAllLines("fajlut.txt", Encoding.UTF8);
         public List<Kepek> questions = new List<Kepek>();
 
         public KepJatekKerdesek()
         {
-            string HelyesValasz, link;
+            string HelyesValasz, link, kerdes;
             string[] Valasz = new string[4];
             for (int i = 0; i < osszSor.Length; i++)
             {
                 string[] adatok = osszSor[i].Split(';');
                 link = adatok[0];
-                Valasz[0] = adatok[1];
-                Valasz[1] = adatok[2];
-                Valasz[2] = adatok[3];
-                Valasz[3] = adatok[4];
-                HelyesValasz = adatok[5];
-                Kepek k = new Kepek(link, Valasz, HelyesValasz);
+                kerdes = adatok[1];
+                Valasz[0] = adatok[2];
+                Valasz[1] = adatok[3];
+                Valasz[2] = adatok[4];
+                Valasz[3] = adatok[5];
+                HelyesValasz = adatok[6];
+                Kepek k = new Kepek(link, kerdes, Valasz, HelyesValasz);
                 questions.Add(k);
             }
         }
@@ -53,9 +55,22 @@ namespace Legyen_ön_is_milliomos
 
         public string getLink(int sor)
         {
+            string link2 = "";
+            for (int i = 0; i < path.Length; i++)
+            {
+                string[] adatok = path[i].Split(';');
+                 link2 = adatok[0];
+            }
             string link = "";
             link = questions[sor].Link;
-            return link;
+            return link2+link;
+        }
+
+        public string getKerdes(int sor)
+        {
+            string kerdes = "";
+            kerdes = questions[sor].Kerdes;
+            return kerdes;
         }
 
         public string getValaszA(int sor)

@@ -86,6 +86,14 @@ namespace Legyen_ön_is_milliomos
                 {
                     N = jk.getSor(szintT, r.Next(jk.osszSor.Length));
                     pictureBox1.Load(jk.getLink(N));
+                    if (jk.getKerdes(N).Equals(""))
+                    {
+                        picQu.Text = "Kié ez a kép?";
+                    }
+                    else
+                    {
+                        picQu.Text = jk.getKerdes(N);
+                    }
                     valaszA.Text = jk.getValaszA(N);
                     valaszB.Text = jk.getValaszB(N);
                     valaszC.Text = jk.getValaszC(N);

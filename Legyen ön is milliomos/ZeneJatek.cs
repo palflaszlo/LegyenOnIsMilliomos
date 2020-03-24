@@ -49,6 +49,17 @@ namespace Legyen_ön_is_milliomos
                 Player.controls.stop();
             }
         }
+        private void btnZene_Click(object sender, EventArgs e)
+        {
+            PlayFile(path, zk.getURL(N));
+            Player.controls.play();
+            btnStop.Enabled = true;
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            Player_PlayStateChange(1);
+        }
 
         private void Player_MediaError(object pMediaObject)
         {
@@ -117,6 +128,14 @@ namespace Legyen_ön_is_milliomos
                 else
                 {
                     N = zk.getSor(szintT, r.Next(zk.osszSor.Length));
+                    if (zk.getKerdes(N).Equals(""))
+                    {
+                        picQu.Text = "Ki az előadó?";
+                    }
+                    else
+                    {
+                        picQu.Text = zk.getKerdes(N);
+                    }
                     valaszA.Text = zk.getValaszA(N);
                     valaszB.Text = zk.getValaszB(N);
                     valaszC.Text = zk.getValaszC(N);
@@ -126,7 +145,7 @@ namespace Legyen_ön_is_milliomos
                 valaszB.ForeColor = Color.White;
                 valaszC.ForeColor = Color.White;
                 valaszD.ForeColor = Color.White;
-
+                btnStop.Enabled = false;
                 valaszA.Visible = true;
                 valaszB.Visible = true;
                 valaszC.Visible = true;
@@ -231,6 +250,7 @@ namespace Legyen_ön_is_milliomos
 
         private void getAnswear(string betu)
         {
+            Player_PlayStateChange(1);
             string helyes = zk.helyesBetu(N);
             if (zk.helyesBetu(N).Equals(betu))
             {
@@ -391,17 +411,6 @@ namespace Legyen_ön_is_milliomos
                 valaszD.ForeColor = Color.Orange;
                 myTimer.Start();
             }
-        }
-
-        private void btnZene_Click(object sender, EventArgs e)
-        {
-            PlayFile(path, zk.getURL(N));
-            Player.controls.play();        
-        }
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            Player_PlayStateChange(1);
         }
 
         private void kozonseg_Click(object sender, EventArgs e)

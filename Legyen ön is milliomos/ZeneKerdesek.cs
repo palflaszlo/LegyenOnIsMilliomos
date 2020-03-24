@@ -15,18 +15,19 @@ namespace Legyen_ön_is_milliomos
 
         public ZeneKerdesek()
         {
-            string HelyesValasz, url;
+            string HelyesValasz, url, kerdes;
             string[] Valasz = new string[4];
             for (int i = 0; i < osszSor.Length; i++)
             {
                 string[] adatok = osszSor[i].Split(';');
                 url = adatok[0];
-                Valasz[0] = adatok[1];
-                Valasz[1] = adatok[2];
-                Valasz[2] = adatok[3];
-                Valasz[3] = adatok[4];
-                HelyesValasz = adatok[5];
-                Zenek z = new Zenek(url, Valasz, HelyesValasz);
+                kerdes = adatok[1];
+                Valasz[0] = adatok[2];
+                Valasz[1] = adatok[3];
+                Valasz[2] = adatok[4];
+                Valasz[3] = adatok[5];
+                HelyesValasz = adatok[6];
+                Zenek z = new Zenek(url, kerdes, Valasz, HelyesValasz);
                 questions.Add(z);
             }
         }
@@ -55,6 +56,13 @@ namespace Legyen_ön_is_milliomos
             string url = "";
             url = questions[sor].URL;
             return url;
+        }
+
+        public string getKerdes(int sor)
+        {
+            string kerdes = "";
+            kerdes = questions[sor].Kerdes;
+            return kerdes;
         }
 
         public string getValaszA(int sor)
